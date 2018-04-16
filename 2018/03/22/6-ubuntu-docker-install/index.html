@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="更新apt源 sudo apt-get update sudo apt-get install apt-transport-https ca-certificates sudo apt-key adv –keyserver hkp://p80.pool.sks-keyservers.net:80 –recv-keys 58118E89F3A912897C070ADBF76221572C52609D">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu-docker-install">
+<meta property="og:url" content="http://yoursite.com/2018/03/22/6-ubuntu-docker-install/index.html">
+<meta property="og:site_name" content="AwfulOrange">
+<meta property="og:description" content="更新apt源 sudo apt-get update sudo apt-get install apt-transport-https ca-certificates sudo apt-key adv –keyserver hkp://p80.pool.sks-keyservers.net:80 –recv-keys 58118E89F3A912897C070ADBF76221572C52609D">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-04-16T10:18:18.602Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ubuntu-docker-install">
+<meta name="twitter:description" content="更新apt源 sudo apt-get update sudo apt-get install apt-transport-https ca-certificates sudo apt-key adv –keyserver hkp://p80.pool.sks-keyservers.net:80 –recv-keys 58118E89F3A912897C070ADBF76221572C52609D">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>ubuntu-docker-install</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/03/22/7-docker-registry/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/03/22/6-ubuntu-docker-install/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/03/22/6-ubuntu-docker-install/&text=ubuntu-docker-install"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/03/22/6-ubuntu-docker-install/&title=ubuntu-docker-install"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/03/22/6-ubuntu-docker-install/&is_video=false&description=ubuntu-docker-install"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ubuntu-docker-install&body=Check out this article: http://yoursite.com/2018/03/22/6-ubuntu-docker-install/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/03/22/6-ubuntu-docker-install/&title=ubuntu-docker-install"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/03/22/6-ubuntu-docker-install/&title=ubuntu-docker-install"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/03/22/6-ubuntu-docker-install/&title=ubuntu-docker-install"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/03/22/6-ubuntu-docker-install/&title=ubuntu-docker-install"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/03/22/6-ubuntu-docker-install/&name=ubuntu-docker-install&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#更新apt源"><span class="toc-number">1.</span> <span class="toc-text">更新apt源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#根据系统选择添加的仓库"><span class="toc-number">2.</span> <span class="toc-text">根据系统选择添加的仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装完成-添加docker用户"><span class="toc-number">3.</span> <span class="toc-text">安装完成 添加docker用户</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        ubuntu-docker-install
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">AwfulOrange</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-03-22T03:46:12.000Z" itemprop="datePublished">2018-03-22</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="更新apt源"><a href="#更新apt源" class="headerlink" title="更新apt源"></a>更新apt源</h3><ul>
+<li>sudo apt-get update</li>
+<li>sudo apt-get install apt-transport-https ca-certificates</li>
+<li>sudo apt-key adv –keyserver hkp://p80.pool.sks-keyservers.net:80 –recv-keys 58118E89F3A912897C070ADBF76221572C52609D<ul>
+<li>如果出现无法获取key错误信息，多试几次即可</li>
+</ul>
+</li>
+</ul>
+<h3 id="根据系统选择添加的仓库"><a href="#根据系统选择添加的仓库" class="headerlink" title="根据系统选择添加的仓库"></a>根据系统选择添加的仓库</h3><table>
+<thead>
+<tr>
+<th>ubuntu version</th>
+<th>Repository</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Precise 12.04 (LTS)</td>
+<td>deb <a href="https://apt.dockerproject.org/repo" target="_blank" rel="noopener">https://apt.dockerproject.org/repo</a> ubuntu-precise main</td>
+</tr>
+<tr>
+<td>Trusty 14.04 (LTS)</td>
+<td>deb <a href="https://apt.dockerproject.org/repo" target="_blank" rel="noopener">https://apt.dockerproject.org/repo</a> ubuntu-trusty main</td>
+</tr>
+<tr>
+<td>Wily 15.10</td>
+<td>deb <a href="https://apt.dockerproject.org/repo" target="_blank" rel="noopener">https://apt.dockerproject.org/repo</a> ubuntu-wily main</td>
+</tr>
+<tr>
+<td>Xenial 16.04 (LTS)</td>
+<td>deb <a href="https://apt.dockerproject.org/repo" target="_blank" rel="noopener">https://apt.dockerproject.org/repo</a> ubuntu-xenial main</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>sudo apt-add-repository {Repository}<ul>
+<li>如果出现：sudo: apt-add-repository: command not found</li>
+<li>执行：sudo apt-get install software-properties-common</li>
+</ul>
+</li>
+<li>sudo apt-get update</li>
+<li><p>sudo apt-cache policy docker-engine（查看所有docker版本）</p>
+<ul>
+<li>sudo apt-get install -y docker-engine= 按需拷贝对应version<ul>
+<li>sudo apt-get install docker-engine=1.13.1-0~ubuntu-trusty</li>
+<li>sudo apt-get install docker-engine=1.13.1-0~ubuntu-xenial</li>
+<li>升级docker版本<ul>
+<li>1.12.6 -&gt; 1.13.1</li>
+<li>sudo apt-get update &amp;&amp; sudo apt-get upgrade docker-engine:1.13.1-0~ubuntu-xenial</li>
+<li>via:<a href="https://docs.docker.com/cs-engine/1.12/upgrade/" target="_blank" rel="noopener">https://docs.docker.com/cs-engine/1.12/upgrade/</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>运行命令后，有很大的几率无法下载，提示速度很慢</li>
+<li>可以在/etc/apt/source.list 中将先前倒入的repo的地址中的https改成http 速度会在一定程度上变快</li>
+</ul>
+</li>
+</ul>
+<h3 id="安装完成-添加docker用户"><a href="#安装完成-添加docker用户" class="headerlink" title="安装完成 添加docker用户"></a>安装完成 添加docker用户</h3><ul>
+<li>sudo usermod -aG docker $USER</li>
+<li><p>exit后重新登录后生效</p>
+</li>
+<li><p>检查docker是否运行</p>
+<ul>
+<li>Ubuntu 16.04:sudo systemctl status docker</li>
+<li>Ubuntu 14.04/16.01 : ps aux|grep docker</li>
+</ul>
+</li>
+<li>docker image 默认存放目录<ul>
+<li>/var/lib/docker/aufs</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#更新apt源"><span class="toc-number">1.</span> <span class="toc-text">更新apt源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#根据系统选择添加的仓库"><span class="toc-number">2.</span> <span class="toc-text">根据系统选择添加的仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装完成-添加docker用户"><span class="toc-number">3.</span> <span class="toc-text">安装完成 添加docker用户</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/03/22/6-ubuntu-docker-install/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/03/22/6-ubuntu-docker-install/&text=ubuntu-docker-install"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/03/22/6-ubuntu-docker-install/&title=ubuntu-docker-install"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/03/22/6-ubuntu-docker-install/&is_video=false&description=ubuntu-docker-install"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ubuntu-docker-install&body=Check out this article: http://yoursite.com/2018/03/22/6-ubuntu-docker-install/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/03/22/6-ubuntu-docker-install/&title=ubuntu-docker-install"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/03/22/6-ubuntu-docker-install/&title=ubuntu-docker-install"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/03/22/6-ubuntu-docker-install/&title=ubuntu-docker-install"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/03/22/6-ubuntu-docker-install/&title=ubuntu-docker-install"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/03/22/6-ubuntu-docker-install/&name=ubuntu-docker-install&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 AwfulOrange
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+

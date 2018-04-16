@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="搭建docker-registry及定时删除image 拉取docker-registry images  docker pull registry:2  添加用户名密码  $ mkdir auth$ docker run \  --entrypoint htpasswd \  registry:2 -Bbn lmfun lmfun-test&amp;gt; htpasswd  docker stop r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建docker-registry及定时删除image">
+<meta property="og:url" content="http://yoursite.com/2018/03/22/7-docker-registry/index.html">
+<meta property="og:site_name" content="AwfulOrange">
+<meta property="og:description" content="搭建docker-registry及定时删除image 拉取docker-registry images  docker pull registry:2  添加用户名密码  $ mkdir auth$ docker run \  --entrypoint htpasswd \  registry:2 -Bbn lmfun lmfun-test&amp;gt; htpasswd  docker stop r">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-04-16T13:48:19.518Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="搭建docker-registry及定时删除image">
+<meta name="twitter:description" content="搭建docker-registry及定时删除image 拉取docker-registry images  docker pull registry:2  添加用户名密码  $ mkdir auth$ docker run \  --entrypoint htpasswd \  registry:2 -Bbn lmfun lmfun-test&amp;gt; htpasswd  docker stop r">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>搭建docker-registry及定时删除image</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/04/16/hello-world/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/03/22/6-ubuntu-docker-install/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/03/22/7-docker-registry/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/03/22/7-docker-registry/&text=搭建docker-registry及定时删除image"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/03/22/7-docker-registry/&title=搭建docker-registry及定时删除image"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/03/22/7-docker-registry/&is_video=false&description=搭建docker-registry及定时删除image"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=搭建docker-registry及定时删除image&body=Check out this article: http://yoursite.com/2018/03/22/7-docker-registry/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/03/22/7-docker-registry/&title=搭建docker-registry及定时删除image"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/03/22/7-docker-registry/&title=搭建docker-registry及定时删除image"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/03/22/7-docker-registry/&title=搭建docker-registry及定时删除image"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/03/22/7-docker-registry/&title=搭建docker-registry及定时删除image"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/03/22/7-docker-registry/&name=搭建docker-registry及定时删除image&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#搭建docker-registry及定时删除image"><span class="toc-number">1.</span> <span class="toc-text">搭建docker-registry及定时删除image</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        搭建docker-registry及定时删除image
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">AwfulOrange</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-03-22T07:46:12.000Z" itemprop="datePublished">2018-03-22</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h4 id="搭建docker-registry及定时删除image"><a href="#搭建docker-registry及定时删除image" class="headerlink" title="搭建docker-registry及定时删除image"></a>搭建docker-registry及定时删除image</h4><ul>
+<li>拉取docker-registry images</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull registry:2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>添加用户名密码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ mkdir auth</span><br><span class="line">$ docker run \</span><br><span class="line">  --entrypoint htpasswd \</span><br><span class="line">  registry:2 -Bbn lmfun lmfun-test&gt; htpasswd</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>docker stop registry</p>
+</li>
+<li><p>docker-registry 直接开启 （无用户名及密码）</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  -p 5000:5000 \</span><br><span class="line">  --restart always \</span><br><span class="line">  --name registry \</span><br><span class="line">  registry:2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>docker-registry 添加可删除属性(定时删除过期的docker image 释放磁盘空间)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  -p 5000:5000 \</span><br><span class="line">  --restart=always \</span><br><span class="line">  --name registry-prod\</span><br><span class="line">  -v /opt/reg-auth:/auth \</span><br><span class="line">  -v /mnt/registry:/var/lib/registry \</span><br><span class="line">  -e &quot;REGISTRY_STORAGE_DELETE_ENABLED=true&quot; \</span><br><span class="line">  -e &quot;REGISTRY_AUTH=htpasswd&quot; \</span><br><span class="line">  -e &quot;REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm&quot; \</span><br><span class="line">  -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \</span><br><span class="line">  registry:2</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>docker-registry http访问</p>
+<ul>
+<li><p>ubuntu 14.04(init system: Upstart) </p>
+<ul>
+<li>sudo vi /etc/docker/daemon.json</li>
+<li><p>添加如下配置后重启（sudo systemctl restart docker）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  		&quot;insecure-registries&quot; : [&quot;myregistrydomain.com:5000&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>ubuntu 16.04(init system: Systemd)</p>
+<ul>
+<li>sudo vi /etc/systemd/system/multi-user.target.wants/docker.service</li>
+<li>ExecStart=/usr/bin/dockerd -H fd:// –registry-mirror=<a href="https://6l2qos50.mirror.aliyuncs.com" target="_blank" rel="noopener">https://6l2qos50.mirror.aliyuncs.com</a> <strong>–insecure-registry=192.168.14.190:6000</strong></li>
+<li>for multi insecure-registry : ExecStart=/usr/bin/dockerd -H fd:// –registry-mirror=<a href="https://6l2qos50.mirror.aliyuncs.com" target="_blank" rel="noopener">https://6l2qos50.mirror.aliyuncs.com</a> <strong>–insecure-registry=192.168.14.190:6000</strong> <strong>–insecure-registry=192.168.14.190:5000</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>python库删除image<ul>
+<li><a href="https://github.com/andrey-pohilko/registry-cli" target="_blank" rel="noopener">https://github.com/andrey-pohilko/registry-cli</a></li>
+</ul>
+</li>
+<li>python ~/registry-cli/registry.py -l bohu:123456 -r <a href="http://localhost:5000" target="_blank" rel="noopener">http://localhost:5000</a> –delete<ul>
+<li>删除image 还需要进行garbage-collect</li>
+</ul>
+</li>
+<li>docker exec registry /bin/registry garbage-collect /etc/docker/registry/config.yml<ul>
+<li>删除物理文件 释放硬盘</li>
+</ul>
+</li>
+<li>docker 删除／垃圾回收 dockerimage 问题<ul>
+<li>repush 显示Layer already exists 怀疑cache问题</li>
+<li>删除显示：deleting tag 3 tag digest not found: 404</li>
+<li>docker restart registry 可解决该问题</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#搭建docker-registry及定时删除image"><span class="toc-number">1.</span> <span class="toc-text">搭建docker-registry及定时删除image</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/03/22/7-docker-registry/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/03/22/7-docker-registry/&text=搭建docker-registry及定时删除image"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/03/22/7-docker-registry/&title=搭建docker-registry及定时删除image"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/03/22/7-docker-registry/&is_video=false&description=搭建docker-registry及定时删除image"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=搭建docker-registry及定时删除image&body=Check out this article: http://yoursite.com/2018/03/22/7-docker-registry/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/03/22/7-docker-registry/&title=搭建docker-registry及定时删除image"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/03/22/7-docker-registry/&title=搭建docker-registry及定时删除image"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/03/22/7-docker-registry/&title=搭建docker-registry及定时删除image"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/03/22/7-docker-registry/&title=搭建docker-registry及定时删除image"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/03/22/7-docker-registry/&name=搭建docker-registry及定时删除image&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 AwfulOrange
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
