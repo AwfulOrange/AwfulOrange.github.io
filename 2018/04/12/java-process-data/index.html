@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="###List转Map Map&amp;lt;String, Integer&amp;gt; receivedMap = giftReceived.stream()        .collect(Collectors.toMap(PromotionLotteryGiftReceivedInfo::getSubPromotionUid, PromotionLotteryGiftReceivedInfo::getR">
+    <meta name="description" content="List转MapMap&amp;lt;String, Integer&amp;gt; receivedMap = giftReceived.stream()        .collect(Collectors.toMap(PromotionLotteryGiftReceivedInfo::getSubPromotionUid, PromotionLotteryGiftReceivedInfo::getRecei">
 <meta name="keywords" content="JAVA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一些java处理数据的方法（需要持续更新）">
 <meta property="og:url" content="http://yoursite.com/2018/04/12/java-process-data/index.html">
 <meta property="og:site_name" content="🍊AwfulOrange">
-<meta property="og:description" content="###List转Map Map&amp;lt;String, Integer&amp;gt; receivedMap = giftReceived.stream()        .collect(Collectors.toMap(PromotionLotteryGiftReceivedInfo::getSubPromotionUid, PromotionLotteryGiftReceivedInfo::getR">
+<meta property="og:description" content="List转MapMap&amp;lt;String, Integer&amp;gt; receivedMap = giftReceived.stream()        .collect(Collectors.toMap(PromotionLotteryGiftReceivedInfo::getSubPromotionUid, PromotionLotteryGiftReceivedInfo::getRecei">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-25T08:50:42.183Z">
+<meta property="og:updated_time" content="2018-06-25T08:57:38.054Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一些java处理数据的方法（需要持续更新）">
-<meta name="twitter:description" content="###List转Map Map&amp;lt;String, Integer&amp;gt; receivedMap = giftReceived.stream()        .collect(Collectors.toMap(PromotionLotteryGiftReceivedInfo::getSubPromotionUid, PromotionLotteryGiftReceivedInfo::getR">
+<meta name="twitter:description" content="List转MapMap&amp;lt;String, Integer&amp;gt; receivedMap = giftReceived.stream()        .collect(Collectors.toMap(PromotionLotteryGiftReceivedInfo::getSubPromotionUid, PromotionLotteryGiftReceivedInfo::getRecei">
     
     
         
@@ -99,7 +99,7 @@
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#List转Map"><span class="toc-number">1.</span> <span class="toc-text">List转Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#筛选List"><span class="toc-number">2.</span> <span class="toc-text">筛选List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拷贝属性"><span class="toc-number">3.</span> <span class="toc-text">拷贝属性</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -138,10 +138,9 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>###List转Map</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Map&lt;String, Integer&gt; receivedMap = giftReceived.stream()</span><br><span class="line">        .collect(Collectors.toMap(PromotionLotteryGiftReceivedInfo::getSubPromotionUid, PromotionLotteryGiftReceivedInfo::getReceivedCount));</span><br><span class="line"></span><br><span class="line">Map&lt;Long, HappyCodePhaseDto&gt; phaseBasicIdMap = Maps.uniqueIndex(phaseList, HappyCodePhaseDto::getBasicId);<span class="comment">//id不为空且必须唯一</span></span><br></pre></td></tr></table></figure>
-<p>###筛选List<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//获得某属性的list</span></span><br><span class="line">List&lt;Long&gt; betIds = showBetList.stream()</span><br><span class="line">                .map(o -&gt; o.getId())</span><br><span class="line">                .collect(Collectors.toList());</span><br><span class="line"><span class="comment">//筛选list中的数据</span></span><br><span class="line">List&lt;FliggyBetConfigDto&gt; betProcessList = showBetList.stream()</span><br><span class="line">                .filter(o -&gt; o.getBetStatus() == FliggyBetStatusEnum.BET_PROCESS.getCode())</span><br><span class="line">                .collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line">orders.removeIf(o -&gt; Objects.equals(o.getDeleted(), <span class="number">1</span>));</span><br></pre></td></tr></table></figure></p>
-<p>###拷贝属性<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">BeanUtils.copy(order, OrdersVO.class); <span class="comment">//参数名-数据类型全部相同才能成功复制</span></span><br><span class="line">BeanUtils.copylist(list, OrdersVO.class); <span class="comment">//参数名-数据类型全部相同才能成功复制</span></span><br></pre></td></tr></table></figure></p>
+    <h3 id="List转Map"><a href="#List转Map" class="headerlink" title="List转Map"></a>List转Map</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Map&lt;String, Integer&gt; receivedMap = giftReceived.stream()</span><br><span class="line">        .collect(Collectors.toMap(PromotionLotteryGiftReceivedInfo::getSubPromotionUid, PromotionLotteryGiftReceivedInfo::getReceivedCount));</span><br><span class="line"></span><br><span class="line">Map&lt;Long, HappyCodePhaseDto&gt; phaseBasicIdMap = Maps.uniqueIndex(phaseList, HappyCodePhaseDto::getBasicId);<span class="comment">//id不为空且必须唯一</span></span><br></pre></td></tr></table></figure>
+<h3 id="筛选List"><a href="#筛选List" class="headerlink" title="筛选List"></a>筛选List</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//获得某属性的list</span></span><br><span class="line">List&lt;Long&gt; betIds = showBetList.stream()</span><br><span class="line">                .map(o -&gt; o.getId())</span><br><span class="line">                .collect(Collectors.toList());</span><br><span class="line"><span class="comment">//筛选list中的数据</span></span><br><span class="line">List&lt;FliggyBetConfigDto&gt; betProcessList = showBetList.stream()</span><br><span class="line">                .filter(o -&gt; o.getBetStatus() == FliggyBetStatusEnum.BET_PROCESS.getCode())</span><br><span class="line">                .collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line">orders.removeIf(o -&gt; Objects.equals(o.getDeleted(), <span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<h3 id="拷贝属性"><a href="#拷贝属性" class="headerlink" title="拷贝属性"></a>拷贝属性</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">BeanUtils.copy(order, OrdersVO.class); <span class="comment">//参数名-数据类型全部相同才能成功复制</span></span><br><span class="line">BeanUtils.copylist(list, OrdersVO.class); <span class="comment">//参数名-数据类型全部相同才能成功复制</span></span><br></pre></td></tr></table></figure>
 
   </div>
 </article>
@@ -166,7 +165,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#List转Map"><span class="toc-number">1.</span> <span class="toc-text">List转Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#筛选List"><span class="toc-number">2.</span> <span class="toc-text">筛选List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拷贝属性"><span class="toc-number">3.</span> <span class="toc-text">拷贝属性</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
