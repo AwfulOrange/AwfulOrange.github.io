@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="方法1-组装多条update-sql此方法需要在连接数据库时加上 &amp;amp;allowMultiQueries=truee.g. jdbc:mysql://localhost:3306/db?createDatabaseIfNotExist=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=UTF-8&amp;amp;zeroDateTimeBehavior=c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="myBatis批量更新问题">
+<meta property="og:url" content="http://yoursite.com/2018/04/05/mybatis-batch-update/index.html">
+<meta property="og:site_name" content="🍊AwfulOrange">
+<meta property="og:description" content="方法1-组装多条update-sql此方法需要在连接数据库时加上 &amp;amp;allowMultiQueries=truee.g. jdbc:mysql://localhost:3306/db?createDatabaseIfNotExist=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=UTF-8&amp;amp;zeroDateTimeBehavior=c">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-06-25T06:20:04.894Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="myBatis批量更新问题">
+<meta name="twitter:description" content="方法1-组装多条update-sql此方法需要在连接数据库时加上 &amp;amp;allowMultiQueries=truee.g. jdbc:mysql://localhost:3306/db?createDatabaseIfNotExist=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=UTF-8&amp;amp;zeroDateTimeBehavior=c">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>myBatis批量更新问题</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/04/16/hello-world/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/03/29/7-docker-registry/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/04/05/mybatis-batch-update/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/04/05/mybatis-batch-update/&text=myBatis批量更新问题"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/04/05/mybatis-batch-update/&title=myBatis批量更新问题"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/04/05/mybatis-batch-update/&is_video=false&description=myBatis批量更新问题"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=myBatis批量更新问题&body=Check out this article: http://yoursite.com/2018/04/05/mybatis-batch-update/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/04/05/mybatis-batch-update/&title=myBatis批量更新问题"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/04/05/mybatis-batch-update/&title=myBatis批量更新问题"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/04/05/mybatis-batch-update/&title=myBatis批量更新问题"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/04/05/mybatis-batch-update/&title=myBatis批量更新问题"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/04/05/mybatis-batch-update/&name=myBatis批量更新问题&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#方法1-组装多条update-sql"><span class="toc-number">1.</span> <span class="toc-text">方法1-组装多条update-sql</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法2-组装多条update-sql-两种写法-写法1"><span class="toc-number">2.</span> <span class="toc-text">方法2-组装多条update-sql-两种写法-写法1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法2-组装多条update-sql-两种写法-写法2"><span class="toc-number">3.</span> <span class="toc-text">方法2-组装多条update-sql-两种写法-写法2</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        myBatis批量更新问题
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">🍊AwfulOrange</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-04-05T06:19:12.000Z" itemprop="datePublished">2018-04-05</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h4 id="方法1-组装多条update-sql"><a href="#方法1-组装多条update-sql" class="headerlink" title="方法1-组装多条update-sql"></a>方法1-组装多条update-sql</h4><p>此方法需要在连接数据库时加上 &amp;allowMultiQueries=true<br>e.g. jdbc:mysql://localhost:3306/db?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true&amp;allowMultiQueries=true<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;update id=&quot;batchUpdateRecord&quot; parameterType=&quot;java.util.List&quot;&gt;</span><br><span class="line">    &lt;foreach collection=&quot;list&quot; item=&quot;item&quot; index=&quot;index&quot; separator=&quot;;&quot;&gt;</span><br><span class="line">        UPDATE</span><br><span class="line">        &lt;include refid=&quot;table_name&quot;/&gt;</span><br><span class="line">        &lt;set&gt;</span><br><span class="line">            &lt;if test=&quot;item.bonus != null&quot;&gt;bonus = #&#123;item.bonus&#125;,&lt;/if&gt;</span><br><span class="line">            &lt;if test=&quot;item.betStatus != null&quot;&gt;bet_status = #&#123;item.betStatus&#125;&lt;/if&gt;</span><br><span class="line">        &lt;/set&gt;</span><br><span class="line">        where id = #&#123;item.id&#125;</span><br><span class="line">    &lt;/foreach&gt;</span><br><span class="line">&lt;/update&gt;</span><br></pre></td></tr></table></figure></p>
+<p>组装后的sql为(多条以分号隔开的update语句)</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> categories <span class="keyword">SET</span> bonus = <span class="number">1</span>,bet_status = <span class="number">0</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> categories <span class="keyword">SET</span> bonus = <span class="number">1</span>,bet_status = <span class="number">0</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="number">2</span>;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h4 id="方法2-组装多条update-sql-两种写法-写法1"><a href="#方法2-组装多条update-sql-两种写法-写法1" class="headerlink" title="方法2-组装多条update-sql-两种写法-写法1"></a>方法2-组装多条update-sql-两种写法-写法1</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;update id=&quot;batchUpdateRecord&quot; parameterType=&quot;list&quot;&gt;</span><br><span class="line">    UPDATE</span><br><span class="line">    &lt;include refid=&quot;table_name&quot;/&gt;</span><br><span class="line">    &lt;foreach collection=&quot;list&quot; separator=&quot;&quot; item=&quot;i&quot; open=&quot;bonus = case id&quot; close=&quot;end, &quot;&gt;</span><br><span class="line">        WHEN #&#123;i.id&#125; THEN #&#123;i.bonus&#125;</span><br><span class="line">    &lt;/foreach&gt;</span><br><span class="line">    &lt;foreach collection=&quot;list&quot; separator=&quot;&quot; item=&quot;i&quot; open=&quot;bet_status = case id&quot; close=&quot;end, &quot;&gt;</span><br><span class="line">        WHEN #&#123;i.id&#125; THEN #&#123;i.betStatus&#125;</span><br><span class="line">    &lt;/foreach&gt;</span><br><span class="line">    WHERE id IN</span><br><span class="line">    &lt;foreach collection=&quot;list&quot; open=&quot;(&quot; close=&quot;)&quot; separator=&quot;,&quot; item=&quot;i&quot;&gt;</span><br><span class="line">        #&#123;i.id&#125;</span><br><span class="line">    &lt;/foreach&gt;</span><br><span class="line">&lt;/update&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="方法2-组装多条update-sql-两种写法-写法2"><a href="#方法2-组装多条update-sql-两种写法-写法2" class="headerlink" title="方法2-组装多条update-sql-两种写法-写法2"></a>方法2-组装多条update-sql-两种写法-写法2</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;update id=&quot;batchUpdateRecord&quot; parameterType=&quot;list&quot;&gt;</span><br><span class="line">    UPDATE</span><br><span class="line">    &lt;include refid=&quot;table_name&quot;/&gt;</span><br><span class="line">    &lt;trim prefix=&quot;set&quot; suffixOverrides=&quot;,&quot;&gt;</span><br><span class="line">        &lt;trim prefix=&quot;bonus =case&quot; suffix=&quot;end,&quot;&gt;</span><br><span class="line">            &lt;foreach collection=&quot;list&quot; item=&quot;i&quot; index=&quot;index&quot;&gt;</span><br><span class="line">                &lt;if test=&quot;i.bonus!=null&quot;&gt;</span><br><span class="line">                    WHEN id=#&#123;i.id&#125; THEN #&#123;i.bonus&#125;</span><br><span class="line">                &lt;/if&gt;</span><br><span class="line">            &lt;/foreach&gt;</span><br><span class="line">        &lt;/trim&gt;</span><br><span class="line">        &lt;trim prefix=&quot; bet_status =case&quot; suffix=&quot;end,&quot;&gt;</span><br><span class="line">            &lt;foreach collection=&quot;list&quot; item=&quot;i&quot; index=&quot;index&quot;&gt;</span><br><span class="line">                &lt;if test=&quot;i.betStatus!=null&quot;&gt;</span><br><span class="line">                    WHEN id=#&#123;i.id&#125; THEN #&#123;i.betStatus&#125;</span><br><span class="line">                &lt;/if&gt;</span><br><span class="line">            &lt;/foreach&gt;</span><br><span class="line">        &lt;/trim&gt;</span><br><span class="line">    &lt;/trim&gt;</span><br><span class="line">    WHERE id IN</span><br><span class="line">    &lt;foreach collection=&quot;list&quot; open=&quot;(&quot; close=&quot;)&quot; separator=&quot;,&quot; item=&quot;i&quot;&gt;</span><br><span class="line">        #&#123;i.id&#125;</span><br><span class="line">    &lt;/foreach&gt;</span><br><span class="line">&lt;/update&gt;</span><br></pre></td></tr></table></figure>
+<p>最后组装的sql类似：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> categories <span class="keyword">SET</span>   </span><br><span class="line">display_order = <span class="keyword">CASE</span> <span class="keyword">id</span> </span><br><span class="line">        <span class="keyword">WHEN</span> <span class="number">1</span> <span class="keyword">THEN</span> <span class="number">3</span> </span><br><span class="line">        <span class="keyword">WHEN</span> <span class="number">2</span> <span class="keyword">THEN</span> <span class="number">4</span> </span><br><span class="line">        <span class="keyword">WHEN</span> <span class="number">3</span> <span class="keyword">THEN</span> <span class="number">5</span> </span><br><span class="line"><span class="keyword">END</span>, </span><br><span class="line">title = <span class="keyword">CASE</span> <span class="keyword">id</span> </span><br><span class="line">        <span class="keyword">WHEN</span> <span class="number">1</span> <span class="keyword">THEN</span> <span class="string">'New Title 1'</span></span><br><span class="line">        <span class="keyword">WHEN</span> <span class="number">2</span> <span class="keyword">THEN</span> <span class="string">'New Title 2'</span></span><br><span class="line">        <span class="keyword">WHEN</span> <span class="number">3</span> <span class="keyword">THEN</span> <span class="string">'New Title 3'</span></span><br><span class="line"><span class="keyword">END</span></span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">id</span> <span class="keyword">IN</span> (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#方法1-组装多条update-sql"><span class="toc-number">1.</span> <span class="toc-text">方法1-组装多条update-sql</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法2-组装多条update-sql-两种写法-写法1"><span class="toc-number">2.</span> <span class="toc-text">方法2-组装多条update-sql-两种写法-写法1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法2-组装多条update-sql-两种写法-写法2"><span class="toc-number">3.</span> <span class="toc-text">方法2-组装多条update-sql-两种写法-写法2</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/04/05/mybatis-batch-update/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/04/05/mybatis-batch-update/&text=myBatis批量更新问题"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/04/05/mybatis-batch-update/&title=myBatis批量更新问题"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/04/05/mybatis-batch-update/&is_video=false&description=myBatis批量更新问题"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=myBatis批量更新问题&body=Check out this article: http://yoursite.com/2018/04/05/mybatis-batch-update/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/04/05/mybatis-batch-update/&title=myBatis批量更新问题"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/04/05/mybatis-batch-update/&title=myBatis批量更新问题"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/04/05/mybatis-batch-update/&title=myBatis批量更新问题"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/04/05/mybatis-batch-update/&title=myBatis批量更新问题"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/04/05/mybatis-batch-update/&name=myBatis批量更新问题&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 🍊AwfulOrange
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
