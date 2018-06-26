@@ -6,21 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="由于chrome的安全限制，postman无法发送带Cookie的请求 如果有需要发送Cookie的需求，需要安装并打开Interceptor拓展程序 ###安装  点击图片中Interceptor按钮postman会自动跳转到google商店 在里面的直接点击添加到extension即可  添加成功后再点击此按钮开启Interceptor即可发送带Cookie的POST请求   ###方法1在浏">
+    <meta name="description" content="由于chrome的安全限制，postman无法发送带Cookie的请求 如果有需要发送Cookie的需求，需要安装并打开Interceptor拓展程序 安装 点击图片中Interceptor按钮postman会自动跳转到google商店 在里面的直接点击添加到extension即可    添加成功后再点击此按钮开启Interceptor即可发送带Cookie的POST请求  方法1在浏览器中访问你">
 <meta name="keywords" content="tools">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Postman模拟发送带Cookie的请求">
 <meta property="og:url" content="http://yoursite.com/2018/04/20/postman-visit-with-chrome-cookie/index.html">
 <meta property="og:site_name" content="🍊AwfulOrange">
-<meta property="og:description" content="由于chrome的安全限制，postman无法发送带Cookie的请求 如果有需要发送Cookie的需求，需要安装并打开Interceptor拓展程序 ###安装  点击图片中Interceptor按钮postman会自动跳转到google商店 在里面的直接点击添加到extension即可  添加成功后再点击此按钮开启Interceptor即可发送带Cookie的POST请求   ###方法1在浏">
+<meta property="og:description" content="由于chrome的安全限制，postman无法发送带Cookie的请求 如果有需要发送Cookie的需求，需要安装并打开Interceptor拓展程序 安装 点击图片中Interceptor按钮postman会自动跳转到google商店 在里面的直接点击添加到extension即可    添加成功后再点击此按钮开启Interceptor即可发送带Cookie的POST请求  方法1在浏览器中访问你">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/image/blog-pic/postman-1.png">
 <meta property="og:image" content="http://yoursite.com/image/blog-pic/postman-2.png">
 <meta property="og:image" content="http://yoursite.com/image/blog-pic/postman-3.png">
-<meta property="og:updated_time" content="2018-06-26T09:00:58.977Z">
+<meta property="og:updated_time" content="2018-06-26T09:03:14.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Postman模拟发送带Cookie的请求">
-<meta name="twitter:description" content="由于chrome的安全限制，postman无法发送带Cookie的请求 如果有需要发送Cookie的需求，需要安装并打开Interceptor拓展程序 ###安装  点击图片中Interceptor按钮postman会自动跳转到google商店 在里面的直接点击添加到extension即可  添加成功后再点击此按钮开启Interceptor即可发送带Cookie的POST请求   ###方法1在浏">
+<meta name="twitter:description" content="由于chrome的安全限制，postman无法发送带Cookie的请求 如果有需要发送Cookie的需求，需要安装并打开Interceptor拓展程序 安装 点击图片中Interceptor按钮postman会自动跳转到google商店 在里面的直接点击添加到extension即可    添加成功后再点击此按钮开启Interceptor即可发送带Cookie的POST请求  方法1在浏览器中访问你">
 <meta name="twitter:image" content="http://yoursite.com/image/blog-pic/postman-1.png">
     
     
@@ -103,7 +103,7 @@
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法1"><span class="toc-number">2.</span> <span class="toc-text">方法1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法2"><span class="toc-number">3.</span> <span class="toc-text">方法2</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -144,15 +144,17 @@
   <div class="content" itemprop="articleBody">
     <p>由于chrome的安全限制，postman无法发送带Cookie的请求</p>
 <p>如果有需要发送Cookie的需求，需要安装并打开Interceptor拓展程序</p>
-<p>###安装</p>
-<ol>
-<li><p>点击图片中Interceptor按钮postman会自动跳转到google商店 在里面的直接点击添加到extension即可<br><img src="/image/blog-pic/postman-1.png" alt="Interceptor"></p>
-</li>
-<li><p>添加成功后再点击此按钮开启Interceptor即可发送带Cookie的POST请求</p>
-</li>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ol>
+<li>点击图片中Interceptor按钮postman会自动跳转到google商店 在里面的直接点击添加到extension即可</li>
 </ol>
-<p>###方法1<br>在浏览器中访问你要访问的接口并复制Cookie到Postman<br><img src="/image/blog-pic/postman-2.png" alt="复制浏览器中Cookie"><br><img src="/image/blog-pic/postman-3.png" alt="黏贴到postman header中"></p>
-<p>###方法2<br>先访问一遍接口，浏览器获得了Cookie后直接发送Post请求</p>
+<p><img src="/image/blog-pic/postman-1.png" alt="Interceptor"></p>
+<ol start="2">
+<li>添加成功后再点击此按钮开启Interceptor即可发送带Cookie的POST请求</li>
+</ol>
+<h3 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h3><p>在浏览器中访问你要访问的接口并复制Cookie到Postman</p>
+<p><img src="/image/blog-pic/postman-2.png" alt="复制浏览器中Cookie"></p>
+<p><img src="/image/blog-pic/postman-3.png" alt="黏贴到postman header中"></p>
+<h3 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h3><p>先访问一遍接口，浏览器获得了Cookie后直接发送Post请求</p>
 
   </div>
 </article>
@@ -177,7 +179,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法1"><span class="toc-number">2.</span> <span class="toc-text">方法1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法2"><span class="toc-number">3.</span> <span class="toc-text">方法2</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
