@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Redis支持的基本类型 String: 字符串 Hash: 散列 List: 列表 Set: 集合 Sorted Set: 有序集合  Redis操作详细的各种类型的操作：http://www.runoob.com/redis/redis-hashes.html以下只截取常用的  redis基本命令不区分大小写（get/set等）除此之外都区分大小写  String类Key值获取方法SET &amp;#">
+    <meta name="description" content="Redis基本知识Redis支持的基本类型 String: 字符串 Hash: 散列 List: 列表 Set: 集合 Sorted Set: 有序集合  Redis操作详细的各种类型的操作：http://www.runoob.com/redis/redis-hashes.html以下只截取常用的  redis基本命令不区分大小写（get/set等）除此之外都区分大小写  String类Key值获">
 <meta name="keywords" content="Redis,Cache">
 <meta property="og:type" content="article">
 <meta property="og:title" content="了解Redis">
 <meta property="og:url" content="http://yoursite.com/2018/05/10/redis/index.html">
 <meta property="og:site_name" content="🍊AwfulOrange">
-<meta property="og:description" content="Redis支持的基本类型 String: 字符串 Hash: 散列 List: 列表 Set: 集合 Sorted Set: 有序集合  Redis操作详细的各种类型的操作：http://www.runoob.com/redis/redis-hashes.html以下只截取常用的  redis基本命令不区分大小写（get/set等）除此之外都区分大小写  String类Key值获取方法SET &amp;#">
+<meta property="og:description" content="Redis基本知识Redis支持的基本类型 String: 字符串 Hash: 散列 List: 列表 Set: 集合 Sorted Set: 有序集合  Redis操作详细的各种类型的操作：http://www.runoob.com/redis/redis-hashes.html以下只截取常用的  redis基本命令不区分大小写（get/set等）除此之外都区分大小写  String类Key值获">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-17T06:34:11.173Z">
+<meta property="og:updated_time" content="2018-07-17T06:41:33.043Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="了解Redis">
-<meta name="twitter:description" content="Redis支持的基本类型 String: 字符串 Hash: 散列 List: 列表 Set: 集合 Sorted Set: 有序集合  Redis操作详细的各种类型的操作：http://www.runoob.com/redis/redis-hashes.html以下只截取常用的  redis基本命令不区分大小写（get/set等）除此之外都区分大小写  String类Key值获取方法SET &amp;#">
+<meta name="twitter:description" content="Redis基本知识Redis支持的基本类型 String: 字符串 Hash: 散列 List: 列表 Set: 集合 Sorted Set: 有序集合  Redis操作详细的各种类型的操作：http://www.runoob.com/redis/redis-hashes.html以下只截取常用的  redis基本命令不区分大小写（get/set等）除此之外都区分大小写  String类Key值获">
     
     
         
@@ -99,7 +99,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis支持的基本类型"><span class="toc-number">1.</span> <span class="toc-text">Redis支持的基本类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis操作"><span class="toc-number">2.</span> <span class="toc-text">Redis操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#String类Key值获取方法"><span class="toc-number">2.1.</span> <span class="toc-text">String类Key值获取方法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#hash值获取方式"><span class="toc-number">2.2.</span> <span class="toc-text">hash值获取方式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存穿透及缓存雪崩"><span class="toc-number"></span> <span class="toc-text">缓存穿透及缓存雪崩</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是缓存穿透"><span class="toc-number">1.</span> <span class="toc-text">什么是缓存穿透</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是缓存雪崩"><span class="toc-number">2.</span> <span class="toc-text">什么是缓存雪崩</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Guava-cache本地缓存"><span class="toc-number">3.</span> <span class="toc-text">Guava cache本地缓存</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地缓存的实现方式？"><span class="toc-number"></span> <span class="toc-text">本地缓存的实现方式？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Memcached和Redis"><span class="toc-number">1.</span> <span class="toc-text">Memcached和Redis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#一些Tip"><span class="toc-number">2.</span> <span class="toc-text">一些Tip</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis基本知识"><span class="toc-number">1.</span> <span class="toc-text">Redis基本知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis支持的基本类型"><span class="toc-number">1.1.</span> <span class="toc-text">Redis支持的基本类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis操作"><span class="toc-number">1.2.</span> <span class="toc-text">Redis操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#String类Key值获取方法"><span class="toc-number">1.2.1.</span> <span class="toc-text">String类Key值获取方法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#hash值获取方式"><span class="toc-number">1.2.2.</span> <span class="toc-text">hash值获取方式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存拓展知识"><span class="toc-number">2.</span> <span class="toc-text">缓存拓展知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是缓存穿透"><span class="toc-number">2.1.</span> <span class="toc-text">什么是缓存穿透</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是缓存雪崩"><span class="toc-number">2.2.</span> <span class="toc-text">什么是缓存雪崩</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#本地缓存的实现方式？"><span class="toc-number">2.3.</span> <span class="toc-text">本地缓存的实现方式？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Memcached和Redis"><span class="toc-number">2.4.</span> <span class="toc-text">Memcached和Redis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#一些Tip"><span class="toc-number">2.5.</span> <span class="toc-text">一些Tip</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -138,7 +138,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h4 id="Redis支持的基本类型"><a href="#Redis支持的基本类型" class="headerlink" title="Redis支持的基本类型"></a>Redis支持的基本类型</h4><ul>
+    <h3 id="Redis基本知识"><a href="#Redis基本知识" class="headerlink" title="Redis基本知识"></a>Redis基本知识</h3><h4 id="Redis支持的基本类型"><a href="#Redis支持的基本类型" class="headerlink" title="Redis支持的基本类型"></a>Redis支持的基本类型</h4><ul>
 <li>String: 字符串</li>
 <li>Hash: 散列</li>
 <li>List: 列表</li>
@@ -151,14 +151,18 @@
 </blockquote>
 <h5 id="String类Key值获取方法"><a href="#String类Key值获取方法" class="headerlink" title="String类Key值获取方法"></a>String类Key值获取方法</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SET &#123;keyname&#125; &#123;value&#125;</span><br><span class="line">DEL &#123;keyname&#125;</span><br><span class="line">KEYS &#123;keypattern&#125; //模糊查询相关key</span><br><span class="line">INCR &#123;key&#125; //将 key 中储存的数字值增一</span><br><span class="line">INCRBY &#123;key&#125; &#123;increment&#125; //将 key 所储存的值加上给定的增量值（increment）</span><br><span class="line">DECR key //将 key 中储存的数字值减一</span><br><span class="line">DECRBY key decrement //key 所储存的值减去给定的减量值（decrement)</span><br></pre></td></tr></table></figure>
 <h5 id="hash值获取方式"><a href="#hash值获取方式" class="headerlink" title="hash值获取方式"></a>hash值获取方式</h5><blockquote>
-<p>Redis hash 是一个string类型的field和value的映射表，hash特别适合用于存储对象。<br>Redis 中每个 hash 可以存储 232 - 1 键值对（40多亿）。</p>
+<p>Redis hash 是一个string类型的field和value的映射表，hash特别适合用于存储对象。<br>Redis 中每个 hash 可以存储 2^32 - 1 键值对（40多亿）。</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HMSET runoobkey name &quot;redis tutorial&quot; description &quot;redis basic commands for caching&quot; likes 20 visitors 23000</span><br><span class="line"></span><br><span class="line">HGETALL key </span><br><span class="line">1) name</span><br><span class="line">2) redis tutorial</span><br><span class="line">3) description</span><br><span class="line">4) redis basic commands for caching</span><br><span class="line">5) likes</span><br><span class="line">6) 20</span><br><span class="line">7) visitors</span><br><span class="line">8) 23000</span><br><span class="line"></span><br><span class="line">//获取runoobkey中name字段的值</span><br><span class="line">HGET runoobkey name</span><br><span class="line">&gt; redis tutorial</span><br><span class="line"></span><br><span class="line">HINCRBY key field increment //为哈希表 key 中的指定字段的整数值加上增量 increment 。</span><br><span class="line">HINCRBYFLOAT key field increment //为哈希表 key 中的指定字段的浮点数值加上增量 increment 。</span><br></pre></td></tr></table></figure>
-<h3 id="缓存穿透及缓存雪崩"><a href="#缓存穿透及缓存雪崩" class="headerlink" title="缓存穿透及缓存雪崩"></a>缓存穿透及缓存雪崩</h3><h4 id="什么是缓存穿透"><a href="#什么是缓存穿透" class="headerlink" title="什么是缓存穿透"></a>什么是缓存穿透</h4><p>一般的缓存系统，都是按照key去缓存查询，如果不存在对应的value，就应该去后端系统查找（比如DB）。<em>如果key对应的value是一定不存在的，并且对该key并发请求量很大，就会对后端系统造成很大的压力。这就叫做缓存穿透。</em></p>
+<h3 id="缓存拓展知识"><a href="#缓存拓展知识" class="headerlink" title="缓存拓展知识"></a>缓存拓展知识</h3><h4 id="什么是缓存穿透"><a href="#什么是缓存穿透" class="headerlink" title="什么是缓存穿透"></a>什么是缓存穿透</h4><p>一般的缓存系统，都是按照key去缓存查询，如果不存在对应的value，就应该去后端系统查找（比如DB）。<em>如果key对应的value是一定不存在的，并且对该key并发请求量很大，就会对后端系统造成很大的压力。这就叫做缓存穿透。</em></p>
 <h4 id="什么是缓存雪崩"><a href="#什么是缓存雪崩" class="headerlink" title="什么是缓存雪崩"></a>什么是缓存雪崩</h4><p>当缓存服务器重启或者大量缓存集中在某一个时间段失效，这样在失效的时候，也会给后端系统(比如DB)带来很大压力。</p>
-<h4 id="Guava-cache本地缓存"><a href="#Guava-cache本地缓存" class="headerlink" title="Guava cache本地缓存"></a>Guava cache本地缓存</h4><h3 id="本地缓存的实现方式？"><a href="#本地缓存的实现方式？" class="headerlink" title="本地缓存的实现方式？"></a>本地缓存的实现方式？</h3><p>需要缓存的数据通过Map类型存储到内存中<br>工具类帮助实现 到时过期，多线程的情况</p>
-<h4 id="Memcached和Redis"><a href="#Memcached和Redis" class="headerlink" title="Memcached和Redis"></a>Memcached和Redis</h4><p>Redis强化版 memcached<br>Redis支持更多类型（上文提到的5种）<br>memcache只支持String类型</p>
-<p>redis - 高可用带集群功能</p>
+<h4 id="本地缓存的实现方式？"><a href="#本地缓存的实现方式？" class="headerlink" title="本地缓存的实现方式？"></a>本地缓存的实现方式？</h4><p>需要缓存的数据通过Map类型存储到内存中<br>工具类帮助实现 到时过期，多线程的情况<br>e.g. Google Guava</p>
+<h4 id="Memcached和Redis"><a href="#Memcached和Redis" class="headerlink" title="Memcached和Redis"></a>Memcached和Redis</h4><p>kv类操作上，两者的性能接近，memcached的结构更加简单，理论上应该会略微快一些。</p>
+<p>Redis支持类型更多<br>Redis支持数据持久化<br>Redis master-slave - 支持集群</p>
+<p>Memcached - 结构简单 - value只支持String类型<br>Memcached - key - value 键值限制严格</p>
+<blockquote>
+<p>对小型静态数据进行缓存处理，最具代表性的例子就是HTML代码片段。memcached的内部内存管理机制虽然不像redis的那样复杂，<br>但却更具实际效率——这是因为memcached在处理元数据时&gt;所消耗的内存资源相对更少。<br>作为memcached所支持的惟一一种数据类型，字符串非常适合用于保存那些只需要进行读取操作的数据，因为字符串本身无需进行进一步处理。</p>
+</blockquote>
 <h4 id="一些Tip"><a href="#一些Tip" class="headerlink" title="一些Tip"></a>一些Tip</h4><p>redis与DB同步写的问题，先写DB，后写redis，因为写内存基本上没有问题。</p>
 
   </div>
@@ -184,7 +188,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis支持的基本类型"><span class="toc-number">1.</span> <span class="toc-text">Redis支持的基本类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis操作"><span class="toc-number">2.</span> <span class="toc-text">Redis操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#String类Key值获取方法"><span class="toc-number">2.1.</span> <span class="toc-text">String类Key值获取方法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#hash值获取方式"><span class="toc-number">2.2.</span> <span class="toc-text">hash值获取方式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存穿透及缓存雪崩"><span class="toc-number"></span> <span class="toc-text">缓存穿透及缓存雪崩</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是缓存穿透"><span class="toc-number">1.</span> <span class="toc-text">什么是缓存穿透</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是缓存雪崩"><span class="toc-number">2.</span> <span class="toc-text">什么是缓存雪崩</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Guava-cache本地缓存"><span class="toc-number">3.</span> <span class="toc-text">Guava cache本地缓存</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地缓存的实现方式？"><span class="toc-number"></span> <span class="toc-text">本地缓存的实现方式？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Memcached和Redis"><span class="toc-number">1.</span> <span class="toc-text">Memcached和Redis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#一些Tip"><span class="toc-number">2.</span> <span class="toc-text">一些Tip</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis基本知识"><span class="toc-number">1.</span> <span class="toc-text">Redis基本知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis支持的基本类型"><span class="toc-number">1.1.</span> <span class="toc-text">Redis支持的基本类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis操作"><span class="toc-number">1.2.</span> <span class="toc-text">Redis操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#String类Key值获取方法"><span class="toc-number">1.2.1.</span> <span class="toc-text">String类Key值获取方法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#hash值获取方式"><span class="toc-number">1.2.2.</span> <span class="toc-text">hash值获取方式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓存拓展知识"><span class="toc-number">2.</span> <span class="toc-text">缓存拓展知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是缓存穿透"><span class="toc-number">2.1.</span> <span class="toc-text">什么是缓存穿透</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是缓存雪崩"><span class="toc-number">2.2.</span> <span class="toc-text">什么是缓存雪崩</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#本地缓存的实现方式？"><span class="toc-number">2.3.</span> <span class="toc-text">本地缓存的实现方式？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Memcached和Redis"><span class="toc-number">2.4.</span> <span class="toc-text">Memcached和Redis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#一些Tip"><span class="toc-number">2.5.</span> <span class="toc-text">一些Tip</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
