@@ -9,14 +9,14 @@
     <meta name="description" content="List转MapMap&amp;lt;String, Integer&amp;gt; receivedMap = giftReceived.stream()        .collect(Collectors.toMap(PromotionLotteryGiftReceivedInfo::getSubPromotionUid, PromotionLotteryGiftReceivedInfo::getRecei">
 <meta name="keywords" content="JAVA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一些java处理数据的方法（需要持续更新）">
+<meta property="og:title" content="一些java处理数据的方法（Stream）">
 <meta property="og:url" content="http://yoursite.com/2018/04/12/java-process-data/index.html">
 <meta property="og:site_name" content="🍊AwfulOrange">
 <meta property="og:description" content="List转MapMap&amp;lt;String, Integer&amp;gt; receivedMap = giftReceived.stream()        .collect(Collectors.toMap(PromotionLotteryGiftReceivedInfo::getSubPromotionUid, PromotionLotteryGiftReceivedInfo::getRecei">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-27T09:34:27.912Z">
+<meta property="og:updated_time" content="2018-07-25T09:06:00.217Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一些java处理数据的方法（需要持续更新）">
+<meta name="twitter:title" content="一些java处理数据的方法（Stream）">
 <meta name="twitter:description" content="List转MapMap&amp;lt;String, Integer&amp;gt; receivedMap = giftReceived.stream()        .collect(Collectors.toMap(PromotionLotteryGiftReceivedInfo::getSubPromotionUid, PromotionLotteryGiftReceivedInfo::getRecei">
     
     
@@ -37,7 +37,7 @@
         
     
     <!-- title -->
-    <title>一些java处理数据的方法（需要持续更新）</title>
+    <title>一些java处理数据的方法（Stream）</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -88,20 +88,20 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/04/12/java-process-data/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/04/12/java-process-data/&text=一些java处理数据的方法（需要持续更新）"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/04/12/java-process-data/&title=一些java处理数据的方法（需要持续更新）"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/04/12/java-process-data/&is_video=false&description=一些java处理数据的方法（需要持续更新）"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=一些java处理数据的方法（需要持续更新）&body=Check out this article: http://yoursite.com/2018/04/12/java-process-data/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/04/12/java-process-data/&title=一些java处理数据的方法（需要持续更新）"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/04/12/java-process-data/&title=一些java处理数据的方法（需要持续更新）"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/04/12/java-process-data/&title=一些java处理数据的方法（需要持续更新）"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/04/12/java-process-data/&title=一些java处理数据的方法（需要持续更新）"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/04/12/java-process-data/&name=一些java处理数据的方法（需要持续更新）&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/04/12/java-process-data/&text=一些java处理数据的方法（Stream）"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/04/12/java-process-data/&title=一些java处理数据的方法（Stream）"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/04/12/java-process-data/&is_video=false&description=一些java处理数据的方法（Stream）"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=一些java处理数据的方法（Stream）&body=Check out this article: http://yoursite.com/2018/04/12/java-process-data/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/04/12/java-process-data/&title=一些java处理数据的方法（Stream）"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/04/12/java-process-data/&title=一些java处理数据的方法（Stream）"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/04/12/java-process-data/&title=一些java处理数据的方法（Stream）"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/04/12/java-process-data/&title=一些java处理数据的方法（Stream）"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/04/12/java-process-data/&name=一些java处理数据的方法（Stream）&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#List转Map"><span class="toc-number">1.</span> <span class="toc-text">List转Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#筛选List"><span class="toc-number">2.</span> <span class="toc-text">筛选List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拷贝属性"><span class="toc-number">3.</span> <span class="toc-text">拷贝属性</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#List转Map"><span class="toc-number">1.</span> <span class="toc-text">List转Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#筛选List"><span class="toc-number">2.</span> <span class="toc-text">筛选List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#List去重"><span class="toc-number">3.</span> <span class="toc-text">List去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stream的性能问题？"><span class="toc-number">4.</span> <span class="toc-text">Stream的性能问题？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象匹配"><span class="toc-number">5.</span> <span class="toc-text">对象匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拷贝属性"><span class="toc-number">6.</span> <span class="toc-text">拷贝属性</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -113,7 +113,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        一些java处理数据的方法（需要持续更新）
+        一些java处理数据的方法（Stream）
     </h1>
 
 
@@ -142,6 +142,25 @@
   <div class="content" itemprop="articleBody">
     <h3 id="List转Map"><a href="#List转Map" class="headerlink" title="List转Map"></a>List转Map</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Map&lt;String, Integer&gt; receivedMap = giftReceived.stream()</span><br><span class="line">        .collect(Collectors.toMap(PromotionLotteryGiftReceivedInfo::getSubPromotionUid, PromotionLotteryGiftReceivedInfo::getReceivedCount));</span><br><span class="line"></span><br><span class="line">Map&lt;Long, HappyCodePhaseDto&gt; phaseBasicIdMap = Maps.uniqueIndex(phaseList, HappyCodePhaseDto::getBasicId);<span class="comment">//id不为空且必须唯一</span></span><br><span class="line"></span><br><span class="line">Map&lt;Long, List&lt;BetRecordDto&gt;&gt; groupBy = betRecordDtoList.stream()</span><br><span class="line">                .collect(Collectors.groupingBy(BetRecordDto::getBetId));</span><br></pre></td></tr></table></figure>
 <h3 id="筛选List"><a href="#筛选List" class="headerlink" title="筛选List"></a>筛选List</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//获得某属性的list</span></span><br><span class="line">List&lt;Long&gt; betIds = showBetList.stream()</span><br><span class="line">                .map(o -&gt; o.getId())</span><br><span class="line">                .collect(Collectors.toList());</span><br><span class="line"><span class="comment">//筛选list中的数据</span></span><br><span class="line">List&lt;FliggyBetConfigDto&gt; betProcessList = showBetList.stream()</span><br><span class="line">                .filter(o -&gt; o.getBetStatus() == FliggyBetStatusEnum.BET_PROCESS.getCode())</span><br><span class="line">                .collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line">orders.removeIf(o -&gt; Objects.equals(o.getDeleted(), <span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<h3 id="List去重"><a href="#List去重" class="headerlink" title="List去重"></a>List去重</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;Long&gt; testList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        testList.add(<span class="number">1L</span>);</span><br><span class="line">        testList.add(<span class="number">2L</span>);</span><br><span class="line">        testList.add(<span class="number">2L</span>);</span><br><span class="line">        testList.add(<span class="number">3L</span>);</span><br><span class="line"></span><br><span class="line">List&lt;Long&gt; testList2= testList.stream()</span><br><span class="line">                .distinct()</span><br><span class="line">                .collect(Collectors.toList());</span><br><span class="line">                <span class="comment">//⚠️</span></span><br><span class="line">System.out.println(<span class="string">"testList--------"</span> + testList.toString());</span><br><span class="line"><span class="comment">//testList--------[1, 2, 2, 3]</span></span><br><span class="line"></span><br><span class="line">System.out.println(<span class="string">"testList2--------"</span> + testList2.toString());</span><br><span class="line"><span class="comment">//testList2--------[1, 2, 3]</span></span><br></pre></td></tr></table></figure>
+<p>注意点⚠️：</p>
+<ul>
+<li>distinct依赖于对象的equals()方法</li>
+<li>转换Stream(fliter/distinct等操作))，每次转换原有Stream对象不改变，返回一个新的Stream对象（<strong>可以有多次转换</strong>）</li>
+</ul>
+<h3 id="Stream的性能问题？"><a href="#Stream的性能问题？" class="headerlink" title="Stream的性能问题？"></a>Stream的性能问题？</h3><blockquote>
+<p>有些细心的同学可能会有这样的疑问：在对于一个Stream进行多次转换操作，每次都对Stream的每个元素进行转换，而且是执行多<br>次，这样时间复杂度就是一个for循环里把所有操作都做掉的N（转换的次数）倍啊。其实不是这样的，转换操作都是lazy的，多个转换<br>操作只会在汇聚操作的时候融合起来，一次循环完成。我们可以这样简单的理解，Stream里有个操作函数的集合，每次转换<br>操作就是把转换函数放入这个集合中，在汇聚操作的时候循环Stream对应的集合，然后对每个元素执行所有的函数</p>
+</blockquote>
+<h3 id="对象匹配"><a href="#对象匹配" class="headerlink" title="对象匹配"></a>对象匹配</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;Long&gt; testList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">testList.add(<span class="number">1L</span>);</span><br><span class="line">testList.add(<span class="number">2L</span>);</span><br><span class="line">testList.add(<span class="number">2L</span>);</span><br><span class="line">testList.add(<span class="number">3L</span>);</span><br><span class="line"></span><br><span class="line">testList.stream().anyMatch(i -&gt; i == <span class="number">4L</span>);</span><br><span class="line"><span class="comment">//false</span></span><br><span class="line">testList.stream().allMatch(i -&gt; i &lt;= <span class="number">4L</span>);</span><br><span class="line"><span class="comment">//true</span></span><br><span class="line">testList.stream().allMatch(<span class="keyword">null</span>);</span><br><span class="line"><span class="comment">//NPE-空指针错误</span></span><br></pre></td></tr></table></figure>
+<p>注意点⚠️：</p>
+<ul>
+<li>allMatch/anyMatch中填写lambda表达式，返回值为布尔值的判断方法（ <em>Predicate<t></t></em> ）</li>
+<li>allMatch/anyMatch 不能直接填写null否则回报空指针错误</li>
+<li>其他表达式<pre><code>- findFirst: 返回Stream中的第一个元素，如果Stream为空，返回空Optional
+– noneMatch：是不是Stream中的所有元素都不满足给定的匹配条件
+– max和min：使用给定的比较器（Operator），返回Stream中的最大|最小值
+</code></pre></li>
+</ul>
 <h3 id="拷贝属性"><a href="#拷贝属性" class="headerlink" title="拷贝属性"></a>拷贝属性</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">BeanUtils.copy(order, OrdersVO.class); <span class="comment">//参数名-数据类型全部相同才能成功复制</span></span><br><span class="line">BeanUtils.copylist(list, OrdersVO.class); <span class="comment">//参数名-数据类型全部相同才能成功复制</span></span><br></pre></td></tr></table></figure>
 
   </div>
@@ -167,21 +186,21 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#List转Map"><span class="toc-number">1.</span> <span class="toc-text">List转Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#筛选List"><span class="toc-number">2.</span> <span class="toc-text">筛选List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拷贝属性"><span class="toc-number">3.</span> <span class="toc-text">拷贝属性</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#List转Map"><span class="toc-number">1.</span> <span class="toc-text">List转Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#筛选List"><span class="toc-number">2.</span> <span class="toc-text">筛选List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#List去重"><span class="toc-number">3.</span> <span class="toc-text">List去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stream的性能问题？"><span class="toc-number">4.</span> <span class="toc-text">Stream的性能问题？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象匹配"><span class="toc-number">5.</span> <span class="toc-text">对象匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拷贝属性"><span class="toc-number">6.</span> <span class="toc-text">拷贝属性</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/04/12/java-process-data/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/04/12/java-process-data/&text=一些java处理数据的方法（需要持续更新）"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/04/12/java-process-data/&title=一些java处理数据的方法（需要持续更新）"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/04/12/java-process-data/&is_video=false&description=一些java处理数据的方法（需要持续更新）"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=一些java处理数据的方法（需要持续更新）&body=Check out this article: http://yoursite.com/2018/04/12/java-process-data/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/04/12/java-process-data/&title=一些java处理数据的方法（需要持续更新）"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/04/12/java-process-data/&title=一些java处理数据的方法（需要持续更新）"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/04/12/java-process-data/&title=一些java处理数据的方法（需要持续更新）"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/04/12/java-process-data/&title=一些java处理数据的方法（需要持续更新）"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/04/12/java-process-data/&name=一些java处理数据的方法（需要持续更新）&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/04/12/java-process-data/&text=一些java处理数据的方法（Stream）"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/04/12/java-process-data/&title=一些java处理数据的方法（Stream）"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/04/12/java-process-data/&is_video=false&description=一些java处理数据的方法（Stream）"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=一些java处理数据的方法（Stream）&body=Check out this article: http://yoursite.com/2018/04/12/java-process-data/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/04/12/java-process-data/&title=一些java处理数据的方法（Stream）"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/04/12/java-process-data/&title=一些java处理数据的方法（Stream）"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/04/12/java-process-data/&title=一些java处理数据的方法（Stream）"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/04/12/java-process-data/&title=一些java处理数据的方法（Stream）"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/04/12/java-process-data/&name=一些java处理数据的方法（Stream）&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="/** * Serializability of a class is enabled by the class implementing the * java.io.Serializable interface. Classes that do not implement this * interface will not have any of their state serialized o">
+<meta name="keywords" content="JAVA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="占一个序列化的坑">
+<meta property="og:url" content="http://yoursite.com/2018/07/17/Serializable/index.html">
+<meta property="og:site_name" content="🍊AwfulOrange">
+<meta property="og:description" content="/** * Serializability of a class is enabled by the class implementing the * java.io.Serializable interface. Classes that do not implement this * interface will not have any of their state serialized o">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-17T08:41:54.440Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="占一个序列化的坑">
+<meta name="twitter:description" content="/** * Serializability of a class is enabled by the class implementing the * java.io.Serializable interface. Classes that do not implement this * interface will not have any of their state serialized o">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>占一个序列化的坑</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">tags</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/07/18/mysqlLock/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/05/16/BitOperation/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/07/17/Serializable/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/07/17/Serializable/&text=占一个序列化的坑"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/07/17/Serializable/&title=占一个序列化的坑"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/07/17/Serializable/&is_video=false&description=占一个序列化的坑"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=占一个序列化的坑&body=Check out this article: http://yoursite.com/2018/07/17/Serializable/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/07/17/Serializable/&title=占一个序列化的坑"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/07/17/Serializable/&title=占一个序列化的坑"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/07/17/Serializable/&title=占一个序列化的坑"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/07/17/Serializable/&title=占一个序列化的坑"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/07/17/Serializable/&name=占一个序列化的坑&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        占一个序列化的坑
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">🍊AwfulOrange</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-07-17T08:27:07.000Z" itemprop="datePublished">2018-07-17</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/JAVA/">JAVA</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Serializability of a class is enabled by the class implementing the</span></span><br><span class="line"><span class="comment"> * java.io.Serializable interface. Classes that do not implement this</span></span><br><span class="line"><span class="comment"> * interface will not have any of their state serialized or</span></span><br><span class="line"><span class="comment"> * deserialized.  All subtypes of a serializable class are themselves</span></span><br><span class="line"><span class="comment"> * serializable.  The serialization interface has no methods or fields</span></span><br><span class="line"><span class="comment"> * and serves only to identify the semantics of being serializable. &lt;p&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * To allow subtypes of non-serializable classes to be serialized, the</span></span><br><span class="line"><span class="comment"> * subtype may assume responsibility for saving and restoring the</span></span><br><span class="line"><span class="comment"> * state of the supertype's public, protected, and (if accessible)</span></span><br><span class="line"><span class="comment"> * package fields.  The subtype may assume this responsibility only if</span></span><br><span class="line"><span class="comment"> * the class it extends has an accessible no-arg constructor to</span></span><br><span class="line"><span class="comment"> * initialize the class's state.  It is an error to declare a class</span></span><br><span class="line"><span class="comment"> * Serializable if this is not the case.  The error will be detected at</span></span><br><span class="line"><span class="comment"> * runtime. &lt;p&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * During deserialization, the fields of non-serializable classes will</span></span><br><span class="line"><span class="comment"> * be initialized using the public or protected no-arg constructor of</span></span><br><span class="line"><span class="comment"> * the class.  A no-arg constructor must be accessible to the subclass</span></span><br><span class="line"><span class="comment"> * that is serializable.  The fields of serializable subclasses will</span></span><br><span class="line"><span class="comment"> * be restored from the stream. &lt;p&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * When traversing a graph, an object may be encountered that does not</span></span><br><span class="line"><span class="comment"> * support the Serializable interface. In this case the</span></span><br><span class="line"><span class="comment"> * NotSerializableException will be thrown and will identify the class</span></span><br><span class="line"><span class="comment"> * of the non-serializable object. &lt;p&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Classes that require special handling during the serialization and</span></span><br><span class="line"><span class="comment"> * deserialization process must implement special methods with these exact</span></span><br><span class="line"><span class="comment"> * signatures:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;PRE&gt;</span></span><br><span class="line"><span class="comment"> * private void writeObject(java.io.ObjectOutputStream out)</span></span><br><span class="line"><span class="comment"> *     throws IOException</span></span><br><span class="line"><span class="comment"> * private void readObject(java.io.ObjectInputStream in)</span></span><br><span class="line"><span class="comment"> *     throws IOException, ClassNotFoundException;</span></span><br><span class="line"><span class="comment"> * private void readObjectNoData()</span></span><br><span class="line"><span class="comment"> *     throws ObjectStreamException;</span></span><br><span class="line"><span class="comment"> * &lt;/PRE&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;The writeObject method is responsible for writing the state of the</span></span><br><span class="line"><span class="comment"> * object for its particular class so that the corresponding</span></span><br><span class="line"><span class="comment"> * readObject method can restore it.  The default mechanism for saving</span></span><br><span class="line"><span class="comment"> * the Object's fields can be invoked by calling</span></span><br><span class="line"><span class="comment"> * out.defaultWriteObject. The method does not need to concern</span></span><br><span class="line"><span class="comment"> * itself with the state belonging to its superclasses or subclasses.</span></span><br><span class="line"><span class="comment"> * State is saved by writing the individual fields to the</span></span><br><span class="line"><span class="comment"> * ObjectOutputStream using the writeObject method or by using the</span></span><br><span class="line"><span class="comment"> * methods for primitive data types supported by DataOutput.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;The readObject method is responsible for reading from the stream and</span></span><br><span class="line"><span class="comment"> * restoring the classes fields. It may call in.defaultReadObject to invoke</span></span><br><span class="line"><span class="comment"> * the default mechanism for restoring the object's non-static and</span></span><br><span class="line"><span class="comment"> * non-transient fields.  The defaultReadObject method uses information in</span></span><br><span class="line"><span class="comment"> * the stream to assign the fields of the object saved in the stream with the</span></span><br><span class="line"><span class="comment"> * correspondingly named fields in the current object.  This handles the case</span></span><br><span class="line"><span class="comment"> * when the class has evolved to add new fields. The method does not need to</span></span><br><span class="line"><span class="comment"> * concern itself with the state belonging to its superclasses or subclasses.</span></span><br><span class="line"><span class="comment"> * State is saved by writing the individual fields to the</span></span><br><span class="line"><span class="comment"> * ObjectOutputStream using the writeObject method or by using the</span></span><br><span class="line"><span class="comment"> * methods for primitive data types supported by DataOutput.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;The readObjectNoData method is responsible for initializing the state of</span></span><br><span class="line"><span class="comment"> * the object for its particular class in the event that the serialization</span></span><br><span class="line"><span class="comment"> * stream does not list the given class as a superclass of the object being</span></span><br><span class="line"><span class="comment"> * deserialized.  This may occur in cases where the receiving party uses a</span></span><br><span class="line"><span class="comment"> * different version of the deserialized instance's class than the sending</span></span><br><span class="line"><span class="comment"> * party, and the receiver's version extends classes that are not extended by</span></span><br><span class="line"><span class="comment"> * the sender's version.  This may also occur if the serialization stream has</span></span><br><span class="line"><span class="comment"> * been tampered; hence, readObjectNoData is useful for initializing</span></span><br><span class="line"><span class="comment"> * deserialized objects properly despite a "hostile" or incomplete source</span></span><br><span class="line"><span class="comment"> * stream.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;Serializable classes that need to designate an alternative object to be</span></span><br><span class="line"><span class="comment"> * used when writing an object to the stream should implement this</span></span><br><span class="line"><span class="comment"> * special method with the exact signature:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;PRE&gt;</span></span><br><span class="line"><span class="comment"> * ANY-ACCESS-MODIFIER Object writeReplace() throws ObjectStreamException;</span></span><br><span class="line"><span class="comment"> * &lt;/PRE&gt;&lt;p&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * This writeReplace method is invoked by serialization if the method</span></span><br><span class="line"><span class="comment"> * exists and it would be accessible from a method defined within the</span></span><br><span class="line"><span class="comment"> * class of the object being serialized. Thus, the method can have private,</span></span><br><span class="line"><span class="comment"> * protected and package-private access. Subclass access to this method</span></span><br><span class="line"><span class="comment"> * follows java accessibility rules. &lt;p&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Classes that need to designate a replacement when an instance of it</span></span><br><span class="line"><span class="comment"> * is read from the stream should implement this special method with the</span></span><br><span class="line"><span class="comment"> * exact signature.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;PRE&gt;</span></span><br><span class="line"><span class="comment"> * ANY-ACCESS-MODIFIER Object readResolve() throws ObjectStreamException;</span></span><br><span class="line"><span class="comment"> * &lt;/PRE&gt;&lt;p&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * This readResolve method follows the same invocation rules and</span></span><br><span class="line"><span class="comment"> * accessibility rules as writeReplace.&lt;p&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * The serialization runtime associates with each serializable class a version</span></span><br><span class="line"><span class="comment"> * number, called a serialVersionUID, which is used during deserialization to</span></span><br><span class="line"><span class="comment"> * verify that the sender and receiver of a serialized object have loaded</span></span><br><span class="line"><span class="comment"> * classes for that object that are compatible with respect to serialization.</span></span><br><span class="line"><span class="comment"> * If the receiver has loaded a class for the object that has a different</span></span><br><span class="line"><span class="comment"> * serialVersionUID than that of the corresponding sender's class, then</span></span><br><span class="line"><span class="comment"> * deserialization will result in an &#123;<span class="doctag">@link</span> InvalidClassException&#125;.  A</span></span><br><span class="line"><span class="comment"> * serializable class can declare its own serialVersionUID explicitly by</span></span><br><span class="line"><span class="comment"> * declaring a field named &lt;code&gt;"serialVersionUID"&lt;/code&gt; that must be static,</span></span><br><span class="line"><span class="comment"> * final, and of type &lt;code&gt;long&lt;/code&gt;:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;PRE&gt;</span></span><br><span class="line"><span class="comment"> * ANY-ACCESS-MODIFIER static final long serialVersionUID = 42L;</span></span><br><span class="line"><span class="comment"> * &lt;/PRE&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * If a serializable class does not explicitly declare a serialVersionUID, then</span></span><br><span class="line"><span class="comment"> * the serialization runtime will calculate a default serialVersionUID value</span></span><br><span class="line"><span class="comment"> * for that class based on various aspects of the class, as described in the</span></span><br><span class="line"><span class="comment"> * Java(TM) Object Serialization Specification.  However, it is &lt;em&gt;strongly</span></span><br><span class="line"><span class="comment"> * recommended&lt;/em&gt; that all serializable classes explicitly declare</span></span><br><span class="line"><span class="comment"> * serialVersionUID values, since the default serialVersionUID computation is</span></span><br><span class="line"><span class="comment"> * highly sensitive to class details that may vary depending on compiler</span></span><br><span class="line"><span class="comment"> * implementations, and can thus result in unexpected</span></span><br><span class="line"><span class="comment"> * &lt;code&gt;InvalidClassException&lt;/code&gt;s during deserialization.  Therefore, to</span></span><br><span class="line"><span class="comment"> * guarantee a consistent serialVersionUID value across different java compiler</span></span><br><span class="line"><span class="comment"> * implementations, a serializable class must declare an explicit</span></span><br><span class="line"><span class="comment"> * serialVersionUID value.  It is also strongly advised that explicit</span></span><br><span class="line"><span class="comment"> * serialVersionUID declarations use the &lt;code&gt;private&lt;/code&gt; modifier where</span></span><br><span class="line"><span class="comment"> * possible, since such declarations apply only to the immediately declaring</span></span><br><span class="line"><span class="comment"> * class--serialVersionUID fields are not useful as inherited members. Array</span></span><br><span class="line"><span class="comment"> * classes cannot declare an explicit serialVersionUID, so they always have</span></span><br><span class="line"><span class="comment"> * the default computed value, but the requirement for matching</span></span><br><span class="line"><span class="comment"> * serialVersionUID values is waived for array classes.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>  unascribed</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> java.io.ObjectOutputStream</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> java.io.ObjectInputStream</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> java.io.ObjectOutput</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> java.io.ObjectInput</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> java.io.Externalizable</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span>   JDK1.1</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<p>灵魂质问：<br>什么是序列化？<br>将Java对象序列化为二进制文件</p>
+<p>如何序列化？<br>被序列化的类需要实现 Serializable 接口<br>使用 ObjectInputStream 和 ObjectOutputStream 进行对象的读写</p>
+<p>什么时候需要序列化？<br>serialVersionUID 干嘛用的？</p>
+<p>有什么序列化的方式？<br>JDK自带序列化方式，hessian2序列化方式</p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">tags</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/07/17/Serializable/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/07/17/Serializable/&text=占一个序列化的坑"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/07/17/Serializable/&title=占一个序列化的坑"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/07/17/Serializable/&is_video=false&description=占一个序列化的坑"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=占一个序列化的坑&body=Check out this article: http://yoursite.com/2018/07/17/Serializable/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/07/17/Serializable/&title=占一个序列化的坑"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/07/17/Serializable/&title=占一个序列化的坑"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/07/17/Serializable/&title=占一个序列化的坑"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/07/17/Serializable/&title=占一个序列化的坑"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/07/17/Serializable/&name=占一个序列化的坑&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 🍊AwfulOrange
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">tags</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
