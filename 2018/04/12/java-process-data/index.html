@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="🍊AwfulOrange">
 <meta property="og:description" content="参考博文：http://ifeve.com/stream/ List转MapMap&amp;lt;String, Integer&amp;gt; receivedMap = giftReceived.stream()        .collect(Collectors.toMap(PromotionLotteryGiftReceivedInfo::getSubPromotionUid, PromotionLot">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-25T09:11:12.612Z">
+<meta property="og:updated_time" content="2018-07-26T09:05:39.049Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一些java处理数据的方法（Stream）">
 <meta name="twitter:description" content="参考博文：http://ifeve.com/stream/ List转MapMap&amp;lt;String, Integer&amp;gt; receivedMap = giftReceived.stream()        .collect(Collectors.toMap(PromotionLotteryGiftReceivedInfo::getSubPromotionUid, PromotionLot">
@@ -101,7 +101,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#List转Map"><span class="toc-number">1.</span> <span class="toc-text">List转Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#筛选List"><span class="toc-number">2.</span> <span class="toc-text">筛选List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#List去重"><span class="toc-number">3.</span> <span class="toc-text">List去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stream的性能问题？"><span class="toc-number">4.</span> <span class="toc-text">Stream的性能问题？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象匹配"><span class="toc-number">5.</span> <span class="toc-text">对象匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拷贝属性"><span class="toc-number">6.</span> <span class="toc-text">拷贝属性</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#List转Map"><span class="toc-number">1.</span> <span class="toc-text">List转Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#筛选List"><span class="toc-number">2.</span> <span class="toc-text">筛选List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#List去重"><span class="toc-number">3.</span> <span class="toc-text">List去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stream的性能问题？"><span class="toc-number">4.</span> <span class="toc-text">Stream的性能问题？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象匹配"><span class="toc-number">5.</span> <span class="toc-text">对象匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拷贝属性"><span class="toc-number">6.</span> <span class="toc-text">拷贝属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将map中属性放入对象"><span class="toc-number">7.</span> <span class="toc-text">将map中属性放入对象</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -163,6 +163,7 @@
 </code></pre></li>
 </ul>
 <h3 id="拷贝属性"><a href="#拷贝属性" class="headerlink" title="拷贝属性"></a>拷贝属性</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">BeanUtils.copy(order, OrdersVO.class); <span class="comment">//参数名-数据类型全部相同才能成功复制</span></span><br><span class="line">BeanUtils.copylist(list, OrdersVO.class); <span class="comment">//参数名-数据类型全部相同才能成功复制</span></span><br></pre></td></tr></table></figure>
+<h3 id="将map中属性放入对象"><a href="#将map中属性放入对象" class="headerlink" title="将map中属性放入对象"></a>将map中属性放入对象</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">BeanUtils.populate( Object bean, Map properties )，</span><br><span class="line"></span><br><span class="line"><span class="comment">//这个方法会遍历map&lt;key, value&gt;中的key，如果bean中有这个属性，就把这个key对应的value值赋给bean的属性。</span></span><br></pre></td></tr></table></figure>
 
   </div>
 </article>
@@ -187,7 +188,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#List转Map"><span class="toc-number">1.</span> <span class="toc-text">List转Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#筛选List"><span class="toc-number">2.</span> <span class="toc-text">筛选List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#List去重"><span class="toc-number">3.</span> <span class="toc-text">List去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stream的性能问题？"><span class="toc-number">4.</span> <span class="toc-text">Stream的性能问题？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象匹配"><span class="toc-number">5.</span> <span class="toc-text">对象匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拷贝属性"><span class="toc-number">6.</span> <span class="toc-text">拷贝属性</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#List转Map"><span class="toc-number">1.</span> <span class="toc-text">List转Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#筛选List"><span class="toc-number">2.</span> <span class="toc-text">筛选List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#List去重"><span class="toc-number">3.</span> <span class="toc-text">List去重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stream的性能问题？"><span class="toc-number">4.</span> <span class="toc-text">Stream的性能问题？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象匹配"><span class="toc-number">5.</span> <span class="toc-text">对象匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拷贝属性"><span class="toc-number">6.</span> <span class="toc-text">拷贝属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将map中属性放入对象"><span class="toc-number">7.</span> <span class="toc-text">将map中属性放入对象</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

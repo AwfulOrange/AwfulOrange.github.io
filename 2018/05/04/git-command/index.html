@@ -15,7 +15,7 @@
 <meta property="og:description" content="git分布空间示意图 基础操作git status git add *git add .git add &amp;#123;filename&amp;#125;git commit -a //提交所有跟踪git commit -m &amp;quot;&amp;quot; //commit文件git push origin &amp;#123;branchName&amp;#125;git checkout develop git checko">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/image/blog-pic/git-1.jpeg">
-<meta property="og:updated_time" content="2018-07-06T03:11:25.151Z">
+<meta property="og:updated_time" content="2018-07-27T08:53:09.979Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git常用命令">
 <meta name="twitter:description" content="git分布空间示意图 基础操作git status git add *git add .git add &amp;#123;filename&amp;#125;git commit -a //提交所有跟踪git commit -m &amp;quot;&amp;quot; //commit文件git push origin &amp;#123;branchName&amp;#125;git checkout develop git checko">
@@ -144,7 +144,8 @@
   <div class="content" itemprop="articleBody">
     <h4 id="git分布空间示意图"><a href="#git分布空间示意图" class="headerlink" title="git分布空间示意图"></a>git分布空间示意图</h4><p><img src="/image/blog-pic/git-1.jpeg" alt="工作区-stage-HEAD"></p>
 <h4 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git status </span><br><span class="line">git add *</span><br><span class="line">git add .</span><br><span class="line">git add &#123;filename&#125;</span><br><span class="line">git commit -a //提交所有跟踪</span><br><span class="line">git commit -m &quot;&quot; //commit文件</span><br><span class="line">git push origin &#123;branchName&#125;</span><br><span class="line">git checkout develop </span><br><span class="line">git checkout -- &#123;filename&#125; // 取消对文件的修改 </span><br><span class="line">git pull //同步远程分支</span><br></pre></td></tr></table></figure>
-<h4 id="不常用但是有用的命令"><a href="#不常用但是有用的命令" class="headerlink" title="不常用但是有用的命令"></a>不常用但是有用的命令</h4><p>查看当前远程仓库信息<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure></p>
+<h4 id="不常用但是有用的命令"><a href="#不常用但是有用的命令" class="headerlink" title="不常用但是有用的命令"></a>不常用但是有用的命令</h4><p>revert特定文件<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git reset &#123;commit-no&#125; &#123;filepath&#125;</span><br></pre></td></tr></table></figure></p>
+<p>查看当前远程仓库信息<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure></p>
 <p>重置git远程仓库<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote set-url origin http://gitlab.xxx.cn/xxx/xxx.git</span><br></pre></td></tr></table></figure></p>
 <p>单独拉取某次commit<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git cherry-pick [commit-no]</span><br></pre></td></tr></table></figure></p>
 <p>清除本地commit，同步到目标分支／同步分支<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git reset --hard origin/[branch] </span><br><span class="line">git reset --hard [commit-no]</span><br><span class="line">git reset --soft 清除commit，保留修改内容</span><br><span class="line">git reset HEAD [filename]</span><br></pre></td></tr></table></figure></p>
