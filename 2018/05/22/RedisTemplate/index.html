@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="两者的关系都是spring-data-redis包中的classStringRedisTemplate继承RedisTemplate ####适用对象RedisTemplate: 各种复杂对象序列化方式：JdkSerializationRedisSerializer StringRedisTemplate: String对象序列化方式：StringRedisSerializer  String-f">
+    <meta name="description" content="两者的关系都是spring-data-redis包中的classStringRedisTemplate继承RedisTemplate 适用对象RedisTemplate: 各种复杂对象序列化方式：JdkSerializationRedisSerializer StringRedisTemplate: String对象序列化方式：StringRedisSerializer  String-focus">
 <meta name="keywords" content="Redis,Spring">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RedisTemplate与StringRedisTemplate的区别">
 <meta property="og:url" content="http://yoursite.com/2018/05/22/RedisTemplate/index.html">
 <meta property="og:site_name" content="🍊AwfulOrange">
-<meta property="og:description" content="两者的关系都是spring-data-redis包中的classStringRedisTemplate继承RedisTemplate ####适用对象RedisTemplate: 各种复杂对象序列化方式：JdkSerializationRedisSerializer StringRedisTemplate: String对象序列化方式：StringRedisSerializer  String-f">
+<meta property="og:description" content="两者的关系都是spring-data-redis包中的classStringRedisTemplate继承RedisTemplate 适用对象RedisTemplate: 各种复杂对象序列化方式：JdkSerializationRedisSerializer StringRedisTemplate: String对象序列化方式：StringRedisSerializer  String-focus">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-31T06:50:06.918Z">
+<meta property="og:updated_time" content="2018-07-31T06:58:10.632Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RedisTemplate与StringRedisTemplate的区别">
-<meta name="twitter:description" content="两者的关系都是spring-data-redis包中的classStringRedisTemplate继承RedisTemplate ####适用对象RedisTemplate: 各种复杂对象序列化方式：JdkSerializationRedisSerializer StringRedisTemplate: String对象序列化方式：StringRedisSerializer  String-f">
+<meta name="twitter:description" content="两者的关系都是spring-data-redis包中的classStringRedisTemplate继承RedisTemplate 适用对象RedisTemplate: 各种复杂对象序列化方式：JdkSerializationRedisSerializer StringRedisTemplate: String对象序列化方式：StringRedisSerializer  String-focus">
     
     
         
@@ -101,7 +101,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#两者的关系"><span class="toc-number">1.</span> <span class="toc-text">两者的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注意点"><span class="toc-number">2.</span> <span class="toc-text">注意点</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#两者的关系"><span class="toc-number">1.</span> <span class="toc-text">两者的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#适用对象"><span class="toc-number">2.</span> <span class="toc-text">适用对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注意点"><span class="toc-number">3.</span> <span class="toc-text">注意点</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -141,7 +141,7 @@
 
   <div class="content" itemprop="articleBody">
     <h4 id="两者的关系"><a href="#两者的关系" class="headerlink" title="两者的关系"></a>两者的关系</h4><p>都是spring-data-redis包中的class<br>StringRedisTemplate继承RedisTemplate</p>
-<p>####适用对象<br>RedisTemplate: 各种复杂对象<br>序列化方式：JdkSerializationRedisSerializer</p>
+<h4 id="适用对象"><a href="#适用对象" class="headerlink" title="适用对象"></a>适用对象</h4><p>RedisTemplate: 各种复杂对象<br>序列化方式：JdkSerializationRedisSerializer</p>
 <p>StringRedisTemplate: String对象<br>序列化方式：StringRedisSerializer</p>
 <blockquote>
 <p>String-focused extension of RedisTemplate. Since most operations against Redis are String based,this class provides<br>a dedicated class that minimizes configuration of its more generic {@link RedisTemplate template}especially in terms of serializers.</p>
@@ -174,7 +174,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#两者的关系"><span class="toc-number">1.</span> <span class="toc-text">两者的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注意点"><span class="toc-number">2.</span> <span class="toc-text">注意点</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#两者的关系"><span class="toc-number">1.</span> <span class="toc-text">两者的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#适用对象"><span class="toc-number">2.</span> <span class="toc-text">适用对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注意点"><span class="toc-number">3.</span> <span class="toc-text">注意点</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
