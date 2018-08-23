@@ -9,14 +9,14 @@
     <meta name="description" content="####参考文章  https://www.cnblogs.com/changna1314/p/6878900.html https://www.cnblogs.com/lyl2016/p/5797519.html  #### 1、innoDB行级锁，MyISAM表级锁2、innoDB有事务相关高级操作，MyISAM为非事务性存储引擎3、">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MyISAM和InnoDB的区别">
+<meta property="og:title" content="占个坑：MyISAM和InnoDB的区别">
 <meta property="og:url" content="http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/index.html">
 <meta property="og:site_name" content="🍊AwfulOrange">
 <meta property="og:description" content="####参考文章  https://www.cnblogs.com/changna1314/p/6878900.html https://www.cnblogs.com/lyl2016/p/5797519.html  #### 1、innoDB行级锁，MyISAM表级锁2、innoDB有事务相关高级操作，MyISAM为非事务性存储引擎3、">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-23T08:56:25.843Z">
+<meta property="og:updated_time" content="2018-08-23T09:32:47.290Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MyISAM和InnoDB的区别">
+<meta name="twitter:title" content="占个坑：MyISAM和InnoDB的区别">
 <meta name="twitter:description" content="####参考文章  https://www.cnblogs.com/changna1314/p/6878900.html https://www.cnblogs.com/lyl2016/p/5797519.html  #### 1、innoDB行级锁，MyISAM表级锁2、innoDB有事务相关高级操作，MyISAM为非事务性存储引擎3、">
     
     
@@ -37,7 +37,7 @@
         
     
     <!-- title -->
-    <title>MyISAM和InnoDB的区别</title>
+    <title>占个坑：MyISAM和InnoDB的区别</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -88,15 +88,15 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&text=MyISAM和InnoDB的区别"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&title=MyISAM和InnoDB的区别"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&is_video=false&description=MyISAM和InnoDB的区别"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=MyISAM和InnoDB的区别&body=Check out this article: http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&title=MyISAM和InnoDB的区别"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&title=MyISAM和InnoDB的区别"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&title=MyISAM和InnoDB的区别"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&title=MyISAM和InnoDB的区别"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&name=MyISAM和InnoDB的区别&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&text=占个坑：MyISAM和InnoDB的区别"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&title=占个坑：MyISAM和InnoDB的区别"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&is_video=false&description=占个坑：MyISAM和InnoDB的区别"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=占个坑：MyISAM和InnoDB的区别&body=Check out this article: http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&title=占个坑：MyISAM和InnoDB的区别"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&title=占个坑：MyISAM和InnoDB的区别"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&title=占个坑：MyISAM和InnoDB的区别"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&title=占个坑：MyISAM和InnoDB的区别"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&name=占个坑：MyISAM和InnoDB的区别&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -113,7 +113,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        MyISAM和InnoDB的区别
+        占个坑：MyISAM和InnoDB的区别
     </h1>
 
 
@@ -177,15 +177,15 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&text=MyISAM和InnoDB的区别"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&title=MyISAM和InnoDB的区别"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&is_video=false&description=MyISAM和InnoDB的区别"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=MyISAM和InnoDB的区别&body=Check out this article: http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&title=MyISAM和InnoDB的区别"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&title=MyISAM和InnoDB的区别"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&title=MyISAM和InnoDB的区别"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&title=MyISAM和InnoDB的区别"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&name=MyISAM和InnoDB的区别&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&text=占个坑：MyISAM和InnoDB的区别"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&title=占个坑：MyISAM和InnoDB的区别"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&is_video=false&description=占个坑：MyISAM和InnoDB的区别"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=占个坑：MyISAM和InnoDB的区别&body=Check out this article: http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&title=占个坑：MyISAM和InnoDB的区别"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&title=占个坑：MyISAM和InnoDB的区别"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&title=占个坑：MyISAM和InnoDB的区别"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&title=占个坑：MyISAM和InnoDB的区别"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/&name=占个坑：MyISAM和InnoDB的区别&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
