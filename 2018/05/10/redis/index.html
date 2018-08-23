@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="🍊AwfulOrange">
 <meta property="og:description" content="Redis基本知识Redis支持的基本类型 String: 字符串 Hash: 散列 List: 列表 Set: 集合 Sorted Set: 有序集合  Redis操作详细的各种类型的操作：http://www.runoob.com/redis/redis-hashes.html以下只截取常用的  redis基本命令不区分大小写（get/set等）除此之外都区分大小写  String类Key值获">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-31T06:21:09.200Z">
+<meta property="og:updated_time" content="2018-08-03T10:59:14.766Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="了解Redis">
 <meta name="twitter:description" content="Redis基本知识Redis支持的基本类型 String: 字符串 Hash: 散列 List: 列表 Set: 集合 Sorted Set: 有序集合  Redis操作详细的各种类型的操作：http://www.runoob.com/redis/redis-hashes.html以下只截取常用的  redis基本命令不区分大小写（get/set等）除此之外都区分大小写  String类Key值获">
@@ -169,7 +169,10 @@
 <blockquote>
 <p>对小型静态数据进行缓存处理，最具代表性的例子就是HTML代码片段。memcached的内部内存管理机制虽然不像redis的那样复杂，<br>但却更具实际效率——这是因为memcached在处理元数据时&gt;所消耗的内存资源相对更少。<br>作为memcached所支持的惟一一种数据类型，字符串非常适合用于保存那些只需要进行读取操作的数据，因为字符串本身无需进行进一步处理。</p>
 </blockquote>
-<h4 id="一些Tip"><a href="#一些Tip" class="headerlink" title="一些Tip"></a>一些Tip</h4><p>redis与DB同步写的问题，先写DB，后写redis，因为写内存基本上没有问题。</p>
+<h4 id="一些Tip"><a href="#一些Tip" class="headerlink" title="一些Tip"></a>一些Tip</h4><ul>
+<li>redis与DB同步写的问题，先写DB，后写redis，因为写内存基本上没有问题。</li>
+<li>redis缓存失效时间尽量错开（应失效时间+随机秒数）- 防止同一时间失效造成redis服务端压力造成redis查询超时空（和缓存雪崩略原理略有不同但是解决方式相同）</li>
+</ul>
 
   </div>
 </article>

@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="🍊AwfulOrange">
 <meta property="og:description" content="计算机编码方式原码 正数：转换为二进制 负数：绝对值转换为二进制并在高位补1  反码 正数的反码就是原码 负数的反码等于原码除符号位以外所有的位取反  e.g.3的反码（int类型的 3 的原码是 11B(B表示二进制位)， 在32位机器上占四个字节）0000 0000 0000 0000 0000 0000 0000 0011-3的原码1000 0000 0000 0000 0000 0000">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-26T09:05:41.328Z">
+<meta property="og:updated_time" content="2018-08-03T03:46:13.760Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="位运算">
 <meta name="twitter:description" content="计算机编码方式原码 正数：转换为二进制 负数：绝对值转换为二进制并在高位补1  反码 正数的反码就是原码 负数的反码等于原码除符号位以外所有的位取反  e.g.3的反码（int类型的 3 的原码是 11B(B表示二进制位)， 在32位机器上占四个字节）0000 0000 0000 0000 0000 0000 0000 0011-3的原码1000 0000 0000 0000 0000 0000">
@@ -101,7 +101,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#计算机编码方式"><span class="toc-number">1.</span> <span class="toc-text">计算机编码方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#原码"><span class="toc-number">1.1.</span> <span class="toc-text">原码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#反码"><span class="toc-number">1.2.</span> <span class="toc-text">反码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#补码"><span class="toc-number">1.3.</span> <span class="toc-text">补码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#位运算操作符"><span class="toc-number">2.</span> <span class="toc-text">位运算操作符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#逻辑运算符"><span class="toc-number">2.1.</span> <span class="toc-text">逻辑运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#移位运算符"><span class="toc-number">2.2.</span> <span class="toc-text">移位运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#位运算符的优先级"><span class="toc-number">2.3.</span> <span class="toc-text">位运算符的优先级 　</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#计算机编码方式"><span class="toc-number">1.</span> <span class="toc-text">计算机编码方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#原码"><span class="toc-number">1.1.</span> <span class="toc-text">原码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#反码"><span class="toc-number">1.2.</span> <span class="toc-text">反码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#补码"><span class="toc-number">1.3.</span> <span class="toc-text">补码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#小结"><span class="toc-number">1.4.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#位运算操作符"><span class="toc-number">2.</span> <span class="toc-text">位运算操作符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#逻辑运算符"><span class="toc-number">2.1.</span> <span class="toc-text">逻辑运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#移位运算符"><span class="toc-number">2.2.</span> <span class="toc-text">移位运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#位运算符的优先级"><span class="toc-number">2.3.</span> <span class="toc-text">位运算符的优先级 　</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -153,7 +153,7 @@
 <li>正数的补码就是其原码</li>
 <li>负数的反码+1就是补码</li>
 </ul>
-<p>####小结<br>正数：原码=反码=补码<br>负数：具体情况具体分析</p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>正数：原码=反码=补码<br>负数：具体情况具体分析</p>
 <p>问：为什么要用补码？<br>答：为了进行做加减运算，因为计算机只有加法计算器，所以a-b的处理方式为a+(-b)，而这过程中如果直接用源码进行计算会出现问题</p>
 <h3 id="位运算操作符"><a href="#位运算操作符" class="headerlink" title="位运算操作符"></a>位运算操作符</h3><h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4><p><code>~</code><br><code>＆</code><br><code>|</code><br><code>^</code></p>
 <h4 id="移位运算符"><a href="#移位运算符" class="headerlink" title="移位运算符"></a>移位运算符</h4><p><code>&gt;&gt;</code><br><code>&lt;&lt;</code><br><code>&gt;&gt;&gt;</code></p>
@@ -182,7 +182,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#计算机编码方式"><span class="toc-number">1.</span> <span class="toc-text">计算机编码方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#原码"><span class="toc-number">1.1.</span> <span class="toc-text">原码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#反码"><span class="toc-number">1.2.</span> <span class="toc-text">反码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#补码"><span class="toc-number">1.3.</span> <span class="toc-text">补码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#位运算操作符"><span class="toc-number">2.</span> <span class="toc-text">位运算操作符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#逻辑运算符"><span class="toc-number">2.1.</span> <span class="toc-text">逻辑运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#移位运算符"><span class="toc-number">2.2.</span> <span class="toc-text">移位运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#位运算符的优先级"><span class="toc-number">2.3.</span> <span class="toc-text">位运算符的优先级 　</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#计算机编码方式"><span class="toc-number">1.</span> <span class="toc-text">计算机编码方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#原码"><span class="toc-number">1.1.</span> <span class="toc-text">原码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#反码"><span class="toc-number">1.2.</span> <span class="toc-text">反码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#补码"><span class="toc-number">1.3.</span> <span class="toc-text">补码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#小结"><span class="toc-number">1.4.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#位运算操作符"><span class="toc-number">2.</span> <span class="toc-text">位运算操作符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#逻辑运算符"><span class="toc-number">2.1.</span> <span class="toc-text">逻辑运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#移位运算符"><span class="toc-number">2.2.</span> <span class="toc-text">移位运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#位运算符的优先级"><span class="toc-number">2.3.</span> <span class="toc-text">位运算符的优先级 　</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
