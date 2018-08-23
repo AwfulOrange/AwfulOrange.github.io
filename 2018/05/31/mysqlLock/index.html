@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="🍊AwfulOrange">
 <meta property="og:description" content="数据库锁出现的原因是为了处理并发问题，因为数据库是一个多用户共享的资源，当出现并发的时候，就会导致出现各种各样奇怪的问题，就像程序代码一样，出现多线程并发的时候，如果不做特殊控制的话，就会出现意外的事情，比如“脏“数据、修改丢失等问题。所以数据库并发需要使用事务来控制，事务并发问题需要数据库锁来控制，所以数据库锁是跟并发控制和事务联系在一起的。  ###参考连接https://www.cnblo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-23T09:21:41.460Z">
+<meta property="og:updated_time" content="2018-08-23T09:31:09.306Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="了解MySQL数据库锁">
 <meta name="twitter:description" content="数据库锁出现的原因是为了处理并发问题，因为数据库是一个多用户共享的资源，当出现并发的时候，就会导致出现各种各样奇怪的问题，就像程序代码一样，出现多线程并发的时候，如果不做特殊控制的话，就会出现意外的事情，比如“脏“数据、修改丢失等问题。所以数据库并发需要使用事务来控制，事务并发问题需要数据库锁来控制，所以数据库锁是跟并发控制和事务联系在一起的。  ###参考连接https://www.cnblo">
@@ -101,7 +101,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#事务的4个特性：ACID（原子性，一致性，隔离性，持久性）"><span class="toc-number">1.</span> <span class="toc-text">事务的4个特性：ACID（原子性，一致性，隔离性，持久性）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#乐观锁-悲观锁-时间戳-用于并发控制"><span class="toc-number">2.</span> <span class="toc-text">乐观锁/悲观锁/时间戳 - 用于并发控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#共享锁和排他锁"><span class="toc-number">2.1.</span> <span class="toc-text">共享锁和排他锁</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#事务的4个特性：ACID（原子性，一致性，隔离性，持久性）"><span class="toc-number">1.</span> <span class="toc-text">事务的4个特性：ACID（原子性，一致性，隔离性，持久性）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#乐观锁-悲观锁-时间戳-用于并发控制"><span class="toc-number">2.</span> <span class="toc-text">乐观锁/悲观锁/时间戳 - 用于并发控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#共享锁和排他锁"><span class="toc-number">2.1.</span> <span class="toc-text">共享锁和排他锁</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表级锁-行级锁"><span class="toc-number">3.</span> <span class="toc-text">表级锁-行级锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#表级锁（table-level）"><span class="toc-number">3.1.</span> <span class="toc-text">表级锁（table-level）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#行级锁（row-level）"><span class="toc-number">3.2.</span> <span class="toc-text">行级锁（row-level）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#页级锁（page-level）"><span class="toc-number">3.3.</span> <span class="toc-text">页级锁（page-level）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#小结"><span class="toc-number">3.4.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -143,7 +143,7 @@
     <blockquote>
 <p>数据库锁出现的原因是为了处理并发问题，因为数据库是一个多用户共享的资源，当出现并发的时候，就会导致出现各种各样奇怪的问题，就像程序代码一样，出现多线程并发的时候，如果不做特殊控制的话，就会出现意外的事情，比如“脏“数据、修改丢失等问题。所以数据库并发需要使用事务来控制，事务并发问题需要数据库锁来控制，所以数据库锁是跟并发控制和事务联系在一起的。</p>
 </blockquote>
-<p>###参考连接<br><a href="https://www.cnblogs.com/luyucheng/p/6297752.html" target="_blank" rel="noopener">https://www.cnblogs.com/luyucheng/p/6297752.html</a></p>
+<p>###参考连接<br><a href="https://www.cnblogs.com/luyucheng/p/6297752.html" target="_blank" rel="noopener">https://www.cnblogs.com/luyucheng/p/6297752.html</a><br><a href="https://www.cnblogs.com/ismallboy/p/5574006.html" target="_blank" rel="noopener">https://www.cnblogs.com/ismallboy/p/5574006.html</a></p>
 <h3 id="事务的4个特性：ACID（原子性，一致性，隔离性，持久性）"><a href="#事务的4个特性：ACID（原子性，一致性，隔离性，持久性）" class="headerlink" title="事务的4个特性：ACID（原子性，一致性，隔离性，持久性）"></a>事务的4个特性：ACID（原子性，一致性，隔离性，持久性）</h3><pre><code>* 原子性:事务是数据库的逻辑工作单位，事务中操作要么都做，要么都不做
 * 一致性:事务的执行结果必须是使数据库从一个一致性状态变大另一个一致性状态，一致性和原子性是密切相关的
 * 隔离性:一个事务执行不能被其他事务干扰
@@ -152,16 +152,17 @@
 <pre><code>* 乐观锁认为一个用户读数据的时候，别人不会去写自己所读的数据
 * 乐观锁就比较简单了，就是不做控制，这只是一部分人对于并发所持有的一种态度而已（😂
 </code></pre><p>2、悲观锁</p>
-<pre><code>* 悲观锁就刚好相反，觉得自己读数据库的时候，别人可能刚好在写自己刚读的数据，其实就是持一种比较保守的态度
-* 悲观锁就是在读取数据的时候，为了不让别人修改自己读取的数据，就会先对自己读取的数据加锁，只有自己把数据读完了，才允许别人修改那部分数据，或者反过来说，就是自己修改某条数据的时候，不允许别人读取该数据，只有等自己的整个事务提交了，才释放自己加上的锁，才允许其他用户访问那部分数据。
+<pre><code>* 悲观锁就刚好相反，觉得自己读数据库的时候，别人可能刚好在写自己刚读的数据，其实就是持一种比较保守的态度。
+* 悲观锁就是在读取数据的时候，为了不让别人修改自己读取的数据，就会先对自己读取的数据加锁，
+只有自己把数据读完了，才允许别人修改那部分数据，或者反过来说，就是自己修改某条数据的时候，
+不允许别人读取该数据，只有等自己的整个事务提交了，才释放自己加上的锁，才允许其他用户访问那部分数据。
 </code></pre><p>3、时间戳</p>
 <pre><code>* 时间戳就是不加锁，通过时间戳来控制并发出现的问题。
 </code></pre><h4 id="共享锁和排他锁"><a href="#共享锁和排他锁" class="headerlink" title="共享锁和排他锁"></a>共享锁和排他锁</h4><p>以上提到的悲观锁所说的加“锁”，其实分为几种锁，分别是：排它锁和共享锁，其中排它锁又称为写锁，共享锁又称为读锁。<br>1、排他锁🔒 - 写锁 - 写时不允许其他读写操作<br>2、共享锁🔒 - 读锁 - 读时允许读操作，不允许写操作</p>
-<p>###表级锁-行级锁</p>
-<p>####表级锁（table-level）<br>表级别的锁定是MySQL各存储引擎中最大颗粒度的锁定机制。<br>该锁定机制最大的特点是实现逻辑非常简单，带来的系统负面影响最小。所以获取锁和释放锁的速度很快。由于表级锁一次会将整个表锁定，所以可以很好的避免困扰我们的死锁问题。<br>当然，锁定颗粒度大所带来最大的负面影响就是出现锁定资源争用的概率也会最高，致使并大度大打折扣。<br>使用表级锁定的主要是<em>MyISAM，MEMORY，CSV</em>等一些非事务性存储引擎。</p>
-<p>####行级锁（row-level）<br>行级锁定最大的特点就是锁定对象的颗粒度很小，也是目前各大数据库管理软件所实现的锁定颗粒度最小的。<br>由于锁定颗粒度很小，所以发生锁定资源争用的概率也最小，能够给予应用程序尽可能大的并发处理能力而提高一些需要高并发应用系统的整体性能。<br>虽然能够在<em>并发处理</em>能力上面有较大的优势，但是行级锁定也因此带来了不少弊端。<br>由于锁定资源的颗粒度很小，所以每次<em>获取锁和释放锁需要做的事情也更多</em>，带来的消耗自然也就更大了。<br>此外，行级锁定也最容易发生死锁。<br>使用行级锁定的主要是<em>InnoDB</em>存储引擎。</p>
-<p>####页级锁（page-level）<br>页级锁定是MySQL中比较独特的一种锁定级别，在其他数据库管理软件中也并不是太常见。<br>页级锁定的特点是锁定颗粒度介于行级锁定与表级锁之间，所以获取锁定所需要的资源开销，以及所能提供的并发处理能力也同样是<em>介于上面二者</em>之间。另外，页级锁定和行级锁定一样，会发生<em>死锁</em>。<br>在数据库实现资源锁定的过程中，随着锁定资源颗粒度的减小，锁定相同数据量的数据所需要消耗的内存数量是越来越多的，实现算法也会越来越复杂。不过，随着锁定资源颗粒度的减小，应用程序的访问请求遇到锁等待的可能性也会随之降低，系统整体并发度也随之提升。<br>使用页级锁定的主要是<em>BerkeleyDB</em>存储引擎。</p>
-<p>####小结<br>表级锁：开销小，加锁快；不会出现死锁；锁定粒度大，发生锁冲突的概率最高，并发度最低；<br>行级锁：开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低，并发度也最高；<br>页面锁：开销和加锁时间界于表锁和行锁之间；会出现死锁；锁定粒度界于表锁和行锁之间，并发度一般。<br>适用：从锁的角度来说，表级锁更适合于以查询为主，只有少量按索引条件更新数据的应用，如Web应用；而行级锁则更适合于有大量按索引条件并发更新少量不同数据，同时又有并发查询的应用，如一些在线事务处理（OLTP）系统。</p>
+<h3 id="表级锁-行级锁"><a href="#表级锁-行级锁" class="headerlink" title="表级锁-行级锁"></a>表级锁-行级锁</h3><h4 id="表级锁（table-level）"><a href="#表级锁（table-level）" class="headerlink" title="表级锁（table-level）"></a>表级锁（table-level）</h4><p>表级别的锁定是MySQL各存储引擎中最大颗粒度的锁定机制。<br>该锁定机制最大的特点是实现逻辑非常简单，带来的系统负面影响最小。所以获取锁和释放锁的速度很快。由于表级锁一次会将整个表锁定，所以可以很好的避免困扰我们的死锁问题。<br>当然，锁定颗粒度大所带来最大的负面影响就是出现锁定资源争用的概率也会最高，致使并大度大打折扣。<br>使用表级锁定的主要是<em>MyISAM，MEMORY，CSV</em>等一些非事务性存储引擎。</p>
+<h4 id="行级锁（row-level）"><a href="#行级锁（row-level）" class="headerlink" title="行级锁（row-level）"></a>行级锁（row-level）</h4><p>行级锁定最大的特点就是锁定对象的颗粒度很小，也是目前各大数据库管理软件所实现的锁定颗粒度最小的。<br>由于锁定颗粒度很小，所以发生锁定资源争用的概率也最小，能够给予应用程序尽可能大的并发处理能力而提高一些需要高并发应用系统的整体性能。<br>虽然能够在<em>并发处理</em>能力上面有较大的优势，但是行级锁定也因此带来了不少弊端。<br>由于锁定资源的颗粒度很小，所以每次<em>获取锁和释放锁需要做的事情也更多</em>，带来的消耗自然也就更大了。<br>此外，行级锁定也最容易发生死锁。<br>使用行级锁定的主要是<em>InnoDB</em>存储引擎。</p>
+<h4 id="页级锁（page-level）"><a href="#页级锁（page-level）" class="headerlink" title="页级锁（page-level）"></a>页级锁（page-level）</h4><p>页级锁定是MySQL中比较独特的一种锁定级别，在其他数据库管理软件中也并不是太常见。<br>页级锁定的特点是锁定颗粒度介于行级锁定与表级锁之间，所以获取锁定所需要的资源开销，以及所能提供的并发处理能力也同样是<em>介于上面二者</em>之间。另外，页级锁定和行级锁定一样，会发生<em>死锁</em>。<br>在数据库实现资源锁定的过程中，随着锁定资源颗粒度的减小，锁定相同数据量的数据所需要消耗的内存数量是越来越多的，实现算法也会越来越复杂。不过，随着锁定资源颗粒度的减小，应用程序的访问请求遇到锁等待的可能性也会随之降低，系统整体并发度也随之提升。<br>使用页级锁定的主要是<em>BerkeleyDB</em>存储引擎。</p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>表级锁：开销小，加锁快；不会出现死锁；锁定粒度大，发生锁冲突的概率最高，并发度最低；<br>行级锁：开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低，并发度也最高；<br>页面锁：开销和加锁时间界于表锁和行锁之间；会出现死锁；锁定粒度界于表锁和行锁之间，并发度一般。<br>适用：从锁的角度来说，表级锁更适合于以查询为主，只有少量按索引条件更新数据的应用，如Web应用；而行级锁则更适合于有大量按索引条件并发更新少量不同数据，同时又有并发查询的应用，如一些在线事务处理（OLTP）系统。</p>
 
   </div>
 </article>
@@ -186,7 +187,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#事务的4个特性：ACID（原子性，一致性，隔离性，持久性）"><span class="toc-number">1.</span> <span class="toc-text">事务的4个特性：ACID（原子性，一致性，隔离性，持久性）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#乐观锁-悲观锁-时间戳-用于并发控制"><span class="toc-number">2.</span> <span class="toc-text">乐观锁/悲观锁/时间戳 - 用于并发控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#共享锁和排他锁"><span class="toc-number">2.1.</span> <span class="toc-text">共享锁和排他锁</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#事务的4个特性：ACID（原子性，一致性，隔离性，持久性）"><span class="toc-number">1.</span> <span class="toc-text">事务的4个特性：ACID（原子性，一致性，隔离性，持久性）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#乐观锁-悲观锁-时间戳-用于并发控制"><span class="toc-number">2.</span> <span class="toc-text">乐观锁/悲观锁/时间戳 - 用于并发控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#共享锁和排他锁"><span class="toc-number">2.1.</span> <span class="toc-text">共享锁和排他锁</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表级锁-行级锁"><span class="toc-number">3.</span> <span class="toc-text">表级锁-行级锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#表级锁（table-level）"><span class="toc-number">3.1.</span> <span class="toc-text">表级锁（table-level）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#行级锁（row-level）"><span class="toc-number">3.2.</span> <span class="toc-text">行级锁（row-level）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#页级锁（page-level）"><span class="toc-number">3.3.</span> <span class="toc-text">页级锁（page-level）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#小结"><span class="toc-number">3.4.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
