@@ -6,20 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="上述表格中的数值类型都是定长的，也就是说，无论你存的数值是多少，多大或者多小，占用的字节大小都是固定的。例如，int(1)，虽然M值是1个字符，但是它所占用的空间大小永远都是4个字节的大小。int(1)和int(11)占用的都是4个字节，tinyint(1)和tinyint(4)占用的是1个字节，只能存入存入从-128到127的数。   注意：这里的M代表的并不是存储在数据库中的具体的长度，以">
+    <meta name="description" content="MySQL数值类范围  上述表格中的数值类型都是定长的，也就是说，无论你存的数值是多少，多大或者多小，占用的字节大小都是固定的。例如，int(1)，虽然M值是1个字符，但是它所占用的空间大小永远都是4个字节的大小。int(1)和int(11)占用的都是4个字节，tinyint(1)和tinyint(4)占用的是1个字节，只能存入存入从-128到127的数。   注意：这里的M代表的并不是存储在数据">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL中各种int的区别">
 <meta property="og:url" content="http://yoursite.com/2018/06/13/mySql中各种int的区别/index.html">
 <meta property="og:site_name" content="🍊AwfulOrange">
-<meta property="og:description" content="上述表格中的数值类型都是定长的，也就是说，无论你存的数值是多少，多大或者多小，占用的字节大小都是固定的。例如，int(1)，虽然M值是1个字符，但是它所占用的空间大小永远都是4个字节的大小。int(1)和int(11)占用的都是4个字节，tinyint(1)和tinyint(4)占用的是1个字节，只能存入存入从-128到127的数。   注意：这里的M代表的并不是存储在数据库中的具体的长度，以">
+<meta property="og:description" content="MySQL数值类范围  上述表格中的数值类型都是定长的，也就是说，无论你存的数值是多少，多大或者多小，占用的字节大小都是固定的。例如，int(1)，虽然M值是1个字符，但是它所占用的空间大小永远都是4个字节的大小。int(1)和int(11)占用的都是4个字节，tinyint(1)和tinyint(4)占用的是1个字节，只能存入存入从-128到127的数。   注意：这里的M代表的并不是存储在数据">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/image/blog-pic/MySQL-int-1.png">
-<meta property="og:image" content="http://yoursite.com/image/blog-pic/MySQL-int-2.png">
-<meta property="og:updated_time" content="2018-08-24T03:12:25.411Z">
+<meta property="og:image" content="http://yoursite.com/image/blog-pic/MySQL-int-2.jpg">
+<meta property="og:updated_time" content="2018-08-24T03:15:04.806Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL中各种int的区别">
-<meta name="twitter:description" content="上述表格中的数值类型都是定长的，也就是说，无论你存的数值是多少，多大或者多小，占用的字节大小都是固定的。例如，int(1)，虽然M值是1个字符，但是它所占用的空间大小永远都是4个字节的大小。int(1)和int(11)占用的都是4个字节，tinyint(1)和tinyint(4)占用的是1个字节，只能存入存入从-128到127的数。   注意：这里的M代表的并不是存储在数据库中的具体的长度，以">
+<meta name="twitter:description" content="MySQL数值类范围  上述表格中的数值类型都是定长的，也就是说，无论你存的数值是多少，多大或者多小，占用的字节大小都是固定的。例如，int(1)，虽然M值是1个字符，但是它所占用的空间大小永远都是4个字节的大小。int(1)和int(11)占用的都是4个字节，tinyint(1)和tinyint(4)占用的是1个字节，只能存入存入从-128到127的数。   注意：这里的M代表的并不是存储在数据">
 <meta name="twitter:image" content="http://yoursite.com/image/blog-pic/MySQL-int-1.png">
     
     
@@ -104,7 +104,7 @@
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL数值类范围"><span class="toc-number">1.</span> <span class="toc-text">MySQL数值类范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zerofill的例子"><span class="toc-number">2.</span> <span class="toc-text">zerofill的例子</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -143,7 +143,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p><img src="/image/blog-pic/MySQL-int-1.png" alt="MySQL数值类范围"></p>
+    <h3 id="MySQL数值类范围"><a href="#MySQL数值类范围" class="headerlink" title="MySQL数值类范围"></a>MySQL数值类范围</h3><p><img src="/image/blog-pic/MySQL-int-1.png" alt="MySQL数值类范围"></p>
 <blockquote>
 <p>上述表格中的数值类型都是定长的，也就是说，无论你存的数值是多少，多大或者多小，占用的字节大小都是固定的。例如，int(1)，虽然M值是1个字符，但是它所占用的空间大小永远都是4个字节的大小。int(1)和int(11)占用的都是4个字节，tinyint(1)和tinyint(4)占用的是1个字节，只能存入存入从-128到127的数。</p>
 </blockquote>
@@ -153,7 +153,7 @@
 <blockquote>
 <p>tinyint(1) 和 tinyint(4) 中的1和4并不表示存储长度，只有字段指定zerofill是有用，如tinyint(4)，如果实际值是2，如果列指定了zerofill，查询结果就是0002，左边用0来填充。</p>
 </blockquote>
-<p><img src="/image/blog-pic/MySQL-int-2.png" alt="数据库选择zerofill,填入的M值会按照位数补位"></p>
+<h3 id="zerofill的例子"><a href="#zerofill的例子" class="headerlink" title="zerofill的例子"></a>zerofill的例子</h3><p><img src="/image/blog-pic/MySQL-int-2.jpg" alt="数据库选择zerofill,填入的M值会按照位数补位"></p>
 
   </div>
 </article>
@@ -178,7 +178,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL数值类范围"><span class="toc-number">1.</span> <span class="toc-text">MySQL数值类范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zerofill的例子"><span class="toc-number">2.</span> <span class="toc-text">zerofill的例子</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
