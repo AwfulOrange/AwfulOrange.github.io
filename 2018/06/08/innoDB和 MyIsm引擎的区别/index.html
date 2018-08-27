@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="参考文章 https://www.cnblogs.com/changna1314/p/6878900.html https://www.cnblogs.com/lyl2016/p/5797519.html  发音问题MyISAM: “My, I, Sam”InnoDB: “inno, d, b” 两种数据引擎的区别1、innoDB行级锁，MyISAM表级锁2、MyISAM是非事务安全型的，而Inn">
+    <meta name="description" content="参考文章 https://www.cnblogs.com/changna1314/p/6878900.html https://www.cnblogs.com/lyl2016/p/5797519.html  发音问题MyISAM: “My, I, Sam”InnoDB: “inno, d, b” 两种数据引擎的区别1、InnoDB行级锁，MyISAM表级锁2、MyISAM是非事务安全型的，而Inn">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MyISAM和InnoDB的区别">
 <meta property="og:url" content="http://yoursite.com/2018/06/08/innoDB和 MyIsm引擎的区别/index.html">
 <meta property="og:site_name" content="🍊AwfulOrange">
-<meta property="og:description" content="参考文章 https://www.cnblogs.com/changna1314/p/6878900.html https://www.cnblogs.com/lyl2016/p/5797519.html  发音问题MyISAM: “My, I, Sam”InnoDB: “inno, d, b” 两种数据引擎的区别1、innoDB行级锁，MyISAM表级锁2、MyISAM是非事务安全型的，而Inn">
+<meta property="og:description" content="参考文章 https://www.cnblogs.com/changna1314/p/6878900.html https://www.cnblogs.com/lyl2016/p/5797519.html  发音问题MyISAM: “My, I, Sam”InnoDB: “inno, d, b” 两种数据引擎的区别1、InnoDB行级锁，MyISAM表级锁2、MyISAM是非事务安全型的，而Inn">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-27T08:24:54.133Z">
+<meta property="og:updated_time" content="2018-08-27T08:30:42.644Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MyISAM和InnoDB的区别">
-<meta name="twitter:description" content="参考文章 https://www.cnblogs.com/changna1314/p/6878900.html https://www.cnblogs.com/lyl2016/p/5797519.html  发音问题MyISAM: “My, I, Sam”InnoDB: “inno, d, b” 两种数据引擎的区别1、innoDB行级锁，MyISAM表级锁2、MyISAM是非事务安全型的，而Inn">
+<meta name="twitter:description" content="参考文章 https://www.cnblogs.com/changna1314/p/6878900.html https://www.cnblogs.com/lyl2016/p/5797519.html  发音问题MyISAM: “My, I, Sam”InnoDB: “inno, d, b” 两种数据引擎的区别1、InnoDB行级锁，MyISAM表级锁2、MyISAM是非事务安全型的，而Inn">
     
     
         
@@ -145,16 +145,16 @@
 <li><a href="https://www.cnblogs.com/lyl2016/p/5797519.html" target="_blank" rel="noopener">https://www.cnblogs.com/lyl2016/p/5797519.html</a></li>
 </ul>
 <h4 id="发音问题"><a href="#发音问题" class="headerlink" title="发音问题"></a>发音问题</h4><p>MyISAM: “My, I, Sam”<br>InnoDB: “inno, d, b”</p>
-<h4 id="两种数据引擎的区别"><a href="#两种数据引擎的区别" class="headerlink" title="两种数据引擎的区别"></a>两种数据引擎的区别</h4><p>1、innoDB行级锁，MyISAM表级锁<br>2、MyISAM是非事务安全型的，而InnoDB是事务安全型的（支持事务处理等高级处理）；<br>3、针对的不同的操作</p>
-<pre><code>* MyISAM：如果执行大量的SELECT，MyISAM是更好选择
-* InnoDB：如果你的数据执行大量的INSERT或UPDATE，出于性能方面的考虑，应该使用InnoDB表
-</code></pre><p>4、查询表的行数不同：</p>
-<pre><code>* MyISAM：select count(*) from table,MyISAM只要简单的读出保存好的行数，注意的是，当count(*)语句包含   where条件时，两种表的操作是一样的
-* InnoDB ： InnoDB 中不保存表的具体行数，也就是说，执行select count(*) from table时，InnoDB要扫描一遍整个表来计算有多少行
-</code></pre><p>5、mysiam表不支持外键，而InnoDB支持<br>6、InnoDB不支持全文索引，而MyISAM支持。MyISAM的全文索引其实没啥用，因为它不支持中文分词，必须由使用者分词后加入空格再写到数据表里，而且少于4个汉字的词会和停用词一样被忽略掉。</p>
-<blockquote>
+<h4 id="两种数据引擎的区别"><a href="#两种数据引擎的区别" class="headerlink" title="两种数据引擎的区别"></a>两种数据引擎的区别</h4><p>1、InnoDB行级锁，MyISAM表级锁<br>2、MyISAM是非事务安全型的，而InnoDB是事务安全型的（支持事务处理等高级处理）；<br>3、针对的不同的操作</p>
+<ul>
+<li>MyISAM：如果执行大量的SELECT，MyISAM是更好选择</li>
+<li>InnoDB：如果你的数据执行大量的INSERT或UPDATE，出于性能方面的考虑，应该使用InnoDB表<br>4、查询表的行数不同：</li>
+<li>MyISAM:select count(<em>) from table,MyISAM只要简单的读出保存好的行数(因为MyISAM内置了一个计数器，count(</em>)时它直接从计数器中读),注意的是，当count(*)语句包含where条件时，两种表的操作是一样的</li>
+<li>InnoDB:InnoDB 中不保存表的具体行数，也就是说，执行select count(*) from table时，InnoDB要扫描一遍整个表来计算有多少行<br>5、MyISAM表不支持外键，而InnoDB支持<br>6、InnoDB不支持全文索引，而MyISAM支持。MyISAM的全文索引其实没啥用，因为它不支持中文分词，必须由使用者分词后加入空格再写到数据表里，而且少于4个汉字的词会和停用词一样被忽略掉。<blockquote>
 <p>全文索引是指对char、varchar和text中的每个词（停用词除外）建立倒排序索引。</p>
 </blockquote>
+</li>
+</ul>
 <h4 id="MyISAM查询操作为什么比Innodb快"><a href="#MyISAM查询操作为什么比Innodb快" class="headerlink" title="MyISAM查询操作为什么比Innodb快"></a>MyISAM查询操作为什么比Innodb快</h4><ul>
 <li>INNODB在做SELECT的时候，要维护的东西比MYISAM引擎多很多；<br>1）数据块，INNODB要缓存，MYISAM只缓存索引块，  这中间还有换进换出的减少；<br>2）innodb寻址要映射到块，再到行，MYISAM 记录的直接是文件的OFFSET，定位比INNODB要快<br>3）INNODB还需要维护MVCC一致；虽然你的场景没有，但他还是需要去检查和维护<blockquote>
 <p>MVCC ( Multi-Version Concurrency Control )多版本并发控制 </p>
