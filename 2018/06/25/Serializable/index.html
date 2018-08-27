@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="本文主要探讨java默认的序列化方式  参考文章https://www.geeksforgeeks.org/serialization-in-java/ 概念序列化：将JAVA对象转换成二进制流反序列化：将二进制流转换为内存中的JAVA对象这种机制用于持久化对象  Serialization is a mechanism of converting the state of an object">
+<meta name="keywords" content="JAVA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA序列化">
+<meta property="og:url" content="http://yoursite.com/2018/06/25/Serializable/index.html">
+<meta property="og:site_name" content="🍊AwfulOrange">
+<meta property="og:description" content="本文主要探讨java默认的序列化方式  参考文章https://www.geeksforgeeks.org/serialization-in-java/ 概念序列化：将JAVA对象转换成二进制流反序列化：将二进制流转换为内存中的JAVA对象这种机制用于持久化对象  Serialization is a mechanism of converting the state of an object">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/image/blog-pic/serialize-deserialize-java.png">
+<meta property="og:updated_time" content="2018-08-27T10:59:04.843Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAVA序列化">
+<meta name="twitter:description" content="本文主要探讨java默认的序列化方式  参考文章https://www.geeksforgeeks.org/serialization-in-java/ 概念序列化：将JAVA对象转换成二进制流反序列化：将二进制流转换为内存中的JAVA对象这种机制用于持久化对象  Serialization is a mechanism of converting the state of an object">
+<meta name="twitter:image" content="http://yoursite.com/image/blog-pic/serialize-deserialize-java.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>JAVA序列化</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">tags</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2018/06/13/mySql中各种int的区别/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/06/25/Serializable/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/06/25/Serializable/&text=JAVA序列化"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/06/25/Serializable/&title=JAVA序列化"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/06/25/Serializable/&is_video=false&description=JAVA序列化"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JAVA序列化&body=Check out this article: http://yoursite.com/2018/06/25/Serializable/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/06/25/Serializable/&title=JAVA序列化"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/06/25/Serializable/&title=JAVA序列化"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/06/25/Serializable/&title=JAVA序列化"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/06/25/Serializable/&title=JAVA序列化"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/06/25/Serializable/&name=JAVA序列化&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#参考文章"><span class="toc-number">1.</span> <span class="toc-text">参考文章</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#概念"><span class="toc-number">2.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如何序列化一个对象？"><span class="toc-number">3.</span> <span class="toc-text">如何序列化一个对象？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#序列化的优点"><span class="toc-number">4.</span> <span class="toc-text">序列化的优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#一些需要注意的点"><span class="toc-number">5.</span> <span class="toc-text">一些需要注意的点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SerialVersionUID"><span class="toc-number">6.</span> <span class="toc-text">SerialVersionUID</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        JAVA序列化
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">🍊AwfulOrange</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-06-25T09:12:01.000Z" itemprop="datePublished">2018-06-25</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/JAVA/">JAVA</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <ul>
+<li>本文主要探讨java默认的序列化方式</li>
+</ul>
+<h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><p><a href="https://www.geeksforgeeks.org/serialization-in-java/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/serialization-in-java/</a></p>
+<h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>序列化：将JAVA对象转换成二进制流<br>反序列化：将二进制流转换为内存中的JAVA对象<br>这种机制用于持久化对象</p>
+<blockquote>
+<p>Serialization is a mechanism of converting the state of an object into a byte stream. Deserialization is the reverse process where the byte stream is used to recreate the actual Java object in memory. This mechanism is used to persist the object.</p>
+</blockquote>
+<p><img src="/image/blog-pic/serialize-deserialize-java.png" alt="JAVA序列化反&amp;序列化]"></p>
+<h4 id="如何序列化一个对象？"><a href="#如何序列化一个对象？" class="headerlink" title="如何序列化一个对象？"></a>如何序列化一个对象？</h4><p>1、实现java.io.Serializable 接口<br>2、ObjectOutputStream类的writeObject(Object obj)方法对对象进行序列化</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">writeObject</span><span class="params">(Object obj)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (enableOverride) &#123;</span><br><span class="line">        writeObjectOverride(obj);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        writeObject0(obj, <span class="keyword">false</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException ex) &#123;</span><br><span class="line">        <span class="keyword">if</span> (depth == <span class="number">0</span>) &#123;</span><br><span class="line">            writeFatalException(ex);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> ex;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、ObjectInputStream类的readObject(Object obj)方法对对象进行反序列化</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> Object <span class="title">readObject</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> IOException, ClassNotFoundException</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (enableOverride) &#123;</span><br><span class="line">        <span class="keyword">return</span> readObjectOverride();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// if nested read, passHandle contains handle of enclosing object</span></span><br><span class="line">    <span class="keyword">int</span> outerHandle = passHandle;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Object obj = readObject0(<span class="keyword">false</span>);</span><br><span class="line">        handles.markDependency(outerHandle, passHandle);</span><br><span class="line">        ClassNotFoundException ex = handles.lookupException(passHandle);</span><br><span class="line">        <span class="keyword">if</span> (ex != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> ex;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (depth == <span class="number">0</span>) &#123;</span><br><span class="line">            vlist.doCallbacks();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        passHandle = outerHandle;</span><br><span class="line">        <span class="keyword">if</span> (closed &amp;&amp; depth == <span class="number">0</span>) &#123;</span><br><span class="line">            clear();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="序列化的优点"><a href="#序列化的优点" class="headerlink" title="序列化的优点"></a>序列化的优点</h4><p>1、保存/持久化 对象的状态<br>2、在网络中传递序列化后的对象<br>只有实现了序列化接口的对象可以被序列化。<br>Serializable是一个 marker interface（标识接口）- 即接口中没有数据及方法。它用来标记JAVA类 从而使这些类拥有特定的功能<br>其他的标记接口还有:Cloneable and Remote.</p>
+<h4 id="一些需要注意的点"><a href="#一些需要注意的点" class="headerlink" title="一些需要注意的点"></a>一些需要注意的点</h4><p>1、父类实现了序列化接口，子类不需要再实现序列化接口，相反情况下（子类实现序列化，父类需要再实现序列化接口）则不同。<br>2、只有非静态数据成员能通过序列化过程保存。<br>3、静态数据成员（static）和临时数据成员（transient）不会通过序列化过程保存。因此，如果您不想保存非静态数据成员的值，那么将其设置为transient。<br>4、在反序列化对象时，不会调用对象的构造函数。<br>5、关联对象必须实现序列化接口。</p>
+<h4 id="SerialVersionUID"><a href="#SerialVersionUID" class="headerlink" title="SerialVersionUID"></a>SerialVersionUID</h4><p>序列化运行时将版本号与称为SerialVersionUID的每个可序列化类关联，该类在反序列化期间用于验证序列化对象的发送方和接收方是否为该对象加载了与序列化兼容的类。如果接收方为对象加载了一个与相应发送方类的UID不同的类，反序列化将报出InvalidClassException异常。可序列化的类可以通过声明字段名显式地声明自己的UID。<br>它必须是静态的、最终的和长类型的。（static final long）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">i.e - ANY-ACCESS-MODIFIER static final long serialVersionUID=42L;</span><br></pre></td></tr></table></figure>
+<p>若可序列化的类没有声明serialVersionUID,那么序列化运行时将根据Java对象序列化规范所述，按照类的各个方面计算该类的默认serialVersionUID。<br>然而，强烈建议所有可序列化的类显式声明serialVersionUID值，因为它的计算高度敏感于类的细节，这些细节可能因编译器的实现而异，类中的任何更改或使用不同的id可能会影响序列化数据。导致异常的抛出。</p>
+<p>同时还建议对UID使用private修饰符，因为它不适用于继承的对象。</p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">tags</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#参考文章"><span class="toc-number">1.</span> <span class="toc-text">参考文章</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#概念"><span class="toc-number">2.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如何序列化一个对象？"><span class="toc-number">3.</span> <span class="toc-text">如何序列化一个对象？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#序列化的优点"><span class="toc-number">4.</span> <span class="toc-text">序列化的优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#一些需要注意的点"><span class="toc-number">5.</span> <span class="toc-text">一些需要注意的点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SerialVersionUID"><span class="toc-number">6.</span> <span class="toc-text">SerialVersionUID</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/06/25/Serializable/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/06/25/Serializable/&text=JAVA序列化"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/06/25/Serializable/&title=JAVA序列化"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/06/25/Serializable/&is_video=false&description=JAVA序列化"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JAVA序列化&body=Check out this article: http://yoursite.com/2018/06/25/Serializable/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/06/25/Serializable/&title=JAVA序列化"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/06/25/Serializable/&title=JAVA序列化"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/06/25/Serializable/&title=JAVA序列化"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/06/25/Serializable/&title=JAVA序列化"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/06/25/Serializable/&name=JAVA序列化&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 🍊AwfulOrange
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">tags</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
