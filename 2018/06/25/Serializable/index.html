@@ -6,19 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="本文主要探讨JAVA默认的序列化方式  参考文章https://www.geeksforgeeks.org/serialization-in-java/ 概念序列化：将JAVA对象转换成二进制流反序列化：将二进制流转换为内存中的JAVA对象这种机制用于持久化对象  Serialization is a mechanism of converting the state of an object">
-<meta name="keywords" content="JAVA">
+    <meta name="description" content="本文主要探讨Java默认的序列化方式  参考文章https://www.geeksforgeeks.org/serialization-in-java/ 概念序列化：将JAVA对象转换成二进制流反序列化：将二进制流转换为内存中的JAVA对象这种机制用于持久化对象  Serialization is a mechanism of converting the state of an object">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JAVA序列化">
+<meta property="og:title" content="Java序列化">
 <meta property="og:url" content="http://yoursite.com/2018/06/25/Serializable/index.html">
 <meta property="og:site_name" content="🍊AwfulOrange">
-<meta property="og:description" content="本文主要探讨JAVA默认的序列化方式  参考文章https://www.geeksforgeeks.org/serialization-in-java/ 概念序列化：将JAVA对象转换成二进制流反序列化：将二进制流转换为内存中的JAVA对象这种机制用于持久化对象  Serialization is a mechanism of converting the state of an object">
+<meta property="og:description" content="本文主要探讨Java默认的序列化方式  参考文章https://www.geeksforgeeks.org/serialization-in-java/ 概念序列化：将JAVA对象转换成二进制流反序列化：将二进制流转换为内存中的JAVA对象这种机制用于持久化对象  Serialization is a mechanism of converting the state of an object">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/image/blog-pic/serialize-deserialize-java.png">
-<meta property="og:updated_time" content="2018-08-28T02:19:41.580Z">
+<meta property="og:updated_time" content="2018-08-28T03:17:30.769Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JAVA序列化">
-<meta name="twitter:description" content="本文主要探讨JAVA默认的序列化方式  参考文章https://www.geeksforgeeks.org/serialization-in-java/ 概念序列化：将JAVA对象转换成二进制流反序列化：将二进制流转换为内存中的JAVA对象这种机制用于持久化对象  Serialization is a mechanism of converting the state of an object">
+<meta name="twitter:title" content="Java序列化">
+<meta name="twitter:description" content="本文主要探讨Java默认的序列化方式  参考文章https://www.geeksforgeeks.org/serialization-in-java/ 概念序列化：将JAVA对象转换成二进制流反序列化：将二进制流转换为内存中的JAVA对象这种机制用于持久化对象  Serialization is a mechanism of converting the state of an object">
 <meta name="twitter:image" content="http://yoursite.com/image/blog-pic/serialize-deserialize-java.png">
     
     
@@ -39,7 +39,7 @@
         
     
     <!-- title -->
-    <title>JAVA序列化</title>
+    <title>Java序列化</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -90,15 +90,15 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/06/25/Serializable/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/06/25/Serializable/&text=JAVA序列化"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/06/25/Serializable/&title=JAVA序列化"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/06/25/Serializable/&is_video=false&description=JAVA序列化"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=JAVA序列化&body=Check out this article: http://yoursite.com/2018/06/25/Serializable/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/06/25/Serializable/&title=JAVA序列化"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/06/25/Serializable/&title=JAVA序列化"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/06/25/Serializable/&title=JAVA序列化"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/06/25/Serializable/&title=JAVA序列化"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/06/25/Serializable/&name=JAVA序列化&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/06/25/Serializable/&text=Java序列化"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/06/25/Serializable/&title=Java序列化"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/06/25/Serializable/&is_video=false&description=Java序列化"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java序列化&body=Check out this article: http://yoursite.com/2018/06/25/Serializable/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/06/25/Serializable/&title=Java序列化"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/06/25/Serializable/&title=Java序列化"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/06/25/Serializable/&title=Java序列化"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/06/25/Serializable/&title=Java序列化"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/06/25/Serializable/&name=Java序列化&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -115,7 +115,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        JAVA序列化
+        Java序列化
     </h1>
 
 
@@ -133,7 +133,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/JAVA/">JAVA</a>
+        <a class="tag-link" href="/tags/Java/">Java</a>
     </div>
 
 
@@ -143,7 +143,7 @@
 
   <div class="content" itemprop="articleBody">
     <ul>
-<li>本文主要探讨JAVA默认的序列化方式</li>
+<li>本文主要探讨Java默认的序列化方式</li>
 </ul>
 <h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><p><a href="https://www.geeksforgeeks.org/serialization-in-java/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/serialization-in-java/</a></p>
 <h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>序列化：将JAVA对象转换成二进制流<br>反序列化：将二进制流转换为内存中的JAVA对象<br>这种机制用于持久化对象</p>
@@ -191,15 +191,15 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/06/25/Serializable/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/06/25/Serializable/&text=JAVA序列化"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/06/25/Serializable/&title=JAVA序列化"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/06/25/Serializable/&is_video=false&description=JAVA序列化"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=JAVA序列化&body=Check out this article: http://yoursite.com/2018/06/25/Serializable/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/06/25/Serializable/&title=JAVA序列化"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/06/25/Serializable/&title=JAVA序列化"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/06/25/Serializable/&title=JAVA序列化"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/06/25/Serializable/&title=JAVA序列化"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/06/25/Serializable/&name=JAVA序列化&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/06/25/Serializable/&text=Java序列化"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/06/25/Serializable/&title=Java序列化"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/06/25/Serializable/&is_video=false&description=Java序列化"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java序列化&body=Check out this article: http://yoursite.com/2018/06/25/Serializable/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/06/25/Serializable/&title=Java序列化"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/06/25/Serializable/&title=Java序列化"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/06/25/Serializable/&title=Java序列化"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/06/25/Serializable/&title=Java序列化"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/06/25/Serializable/&name=Java序列化&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
