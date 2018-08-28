@@ -6,19 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="本文主要探讨java默认的序列化方式  参考文章https://www.geeksforgeeks.org/serialization-in-java/ 概念序列化：将JAVA对象转换成二进制流反序列化：将二进制流转换为内存中的JAVA对象这种机制用于持久化对象  Serialization is a mechanism of converting the state of an object">
+    <meta name="description" content="本文主要探讨JAVA默认的序列化方式  参考文章https://www.geeksforgeeks.org/serialization-in-java/ 概念序列化：将JAVA对象转换成二进制流反序列化：将二进制流转换为内存中的JAVA对象这种机制用于持久化对象  Serialization is a mechanism of converting the state of an object">
 <meta name="keywords" content="JAVA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JAVA序列化">
 <meta property="og:url" content="http://yoursite.com/2018/06/25/Serializable/index.html">
 <meta property="og:site_name" content="🍊AwfulOrange">
-<meta property="og:description" content="本文主要探讨java默认的序列化方式  参考文章https://www.geeksforgeeks.org/serialization-in-java/ 概念序列化：将JAVA对象转换成二进制流反序列化：将二进制流转换为内存中的JAVA对象这种机制用于持久化对象  Serialization is a mechanism of converting the state of an object">
+<meta property="og:description" content="本文主要探讨JAVA默认的序列化方式  参考文章https://www.geeksforgeeks.org/serialization-in-java/ 概念序列化：将JAVA对象转换成二进制流反序列化：将二进制流转换为内存中的JAVA对象这种机制用于持久化对象  Serialization is a mechanism of converting the state of an object">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/image/blog-pic/serialize-deserialize-java.png">
-<meta property="og:updated_time" content="2018-08-27T11:02:51.545Z">
+<meta property="og:updated_time" content="2018-08-28T02:19:41.580Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JAVA序列化">
-<meta name="twitter:description" content="本文主要探讨java默认的序列化方式  参考文章https://www.geeksforgeeks.org/serialization-in-java/ 概念序列化：将JAVA对象转换成二进制流反序列化：将二进制流转换为内存中的JAVA对象这种机制用于持久化对象  Serialization is a mechanism of converting the state of an object">
+<meta name="twitter:description" content="本文主要探讨JAVA默认的序列化方式  参考文章https://www.geeksforgeeks.org/serialization-in-java/ 概念序列化：将JAVA对象转换成二进制流反序列化：将二进制流转换为内存中的JAVA对象这种机制用于持久化对象  Serialization is a mechanism of converting the state of an object">
 <meta name="twitter:image" content="http://yoursite.com/image/blog-pic/serialize-deserialize-java.png">
     
     
@@ -72,6 +72,8 @@
     <br/>
     <span id="actions">
       <ul>
+        
+        <li><a class="icon" href="/2018/07/03/java-exception/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
         <li><a class="icon" href="/2018/06/13/mySql中各种int的区别/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
@@ -141,7 +143,7 @@
 
   <div class="content" itemprop="articleBody">
     <ul>
-<li>本文主要探讨java默认的序列化方式</li>
+<li>本文主要探讨JAVA默认的序列化方式</li>
 </ul>
 <h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><p><a href="https://www.geeksforgeeks.org/serialization-in-java/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/serialization-in-java/</a></p>
 <h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>序列化：将JAVA对象转换成二进制流<br>反序列化：将二进制流转换为内存中的JAVA对象<br>这种机制用于持久化对象</p>
@@ -156,7 +158,7 @@
 <h4 id="序列化的优点"><a href="#序列化的优点" class="headerlink" title="序列化的优点"></a>序列化的优点</h4><p>1、保存/持久化 对象的状态<br>2、在网络中传递序列化后的对象<br>只有实现了序列化接口的对象可以被序列化。<br>Serializable是一个 marker interface（标识接口）- 即接口中没有数据及方法。<br>它用来标记JAVA类,从而使这些类拥有特定的功能,其他的标记接口还有:Cloneable and Remote.</p>
 <h4 id="一些需要注意的点"><a href="#一些需要注意的点" class="headerlink" title="一些需要注意的点"></a>一些需要注意的点</h4><p>1、父类实现了序列化接口，子类不需要再实现序列化接口，相反情况下（子类实现序列化，父类需要再实现序列化接口）则不同。<br>2、只有非静态数据成员能通过序列化过程保存。<br>3、静态数据成员（static）和临时数据成员（transient）不会通过序列化过程保存。因此，如果您不想保存非静态数据成员的值，那么将其设置为transient。<br>4、在反序列化对象时，不会调用对象的构造函数。<br>5、关联对象必须实现序列化接口。</p>
 <h4 id="SerialVersionUID"><a href="#SerialVersionUID" class="headerlink" title="SerialVersionUID"></a>SerialVersionUID</h4><p>序列化运行时将版本号与称为SerialVersionUID的每个可序列化类关联，该类在反序列化期间用于验证序列化对象的发送方和接收方是否为该对象加载了与序列化兼容的类。如果接收方为对象加载了一个与相应发送方类的UID不同的类，反序列化将报出InvalidClassException异常。<br>可序列化的类可以通过声明字段名显式地声明自己的UID。<br>它必须是静态的、最终的和长类型的。（static final long）</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ANY-ACCESS-MODIFIER <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID=<span class="number">42L</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ANY-ACCESS-MODIFIER <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">42L</span>;</span><br></pre></td></tr></table></figure>
 <p>若可序列化的类没有声明serialVersionUID,那么序列化运行时将根据Java对象序列化规范所述，按照类的各个方面计算该类的默认serialVersionUID。<br>强烈建议所有可序列化的类都显式声明serialVersionUID值，因为JAVA的默认计算方法依赖于各种细节，这些细节可能因编译器的实现而异，类中的任何更改或使用不同的id可能会影响序列化数据。</p>
 <p>同时还建议对UID使用<em>private</em>修饰符，因为它不适用于继承的对象。</p>
 
