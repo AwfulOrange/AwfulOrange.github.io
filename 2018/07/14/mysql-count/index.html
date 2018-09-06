@@ -6,20 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="背景在实际开发过程中，需要计算当前条件下有多少数据时，都需使用count()方法来获取行数，同事中有各种count（）的方法，这里探讨一下常见几种count的区别 表结构 各种count的结果select * from tb_collect_card_info_copy1; select count(*) from tb_collect_card_info_copy1; select count(">
+    <meta name="description" content="背景在实际开发过程中，需要计算当前条件下有多少数据时，都需使用count()方法来获取行数，同事中有各种count（）的方法，这里探讨一下常见几种count的区别 表结构 各种count的结果select count(*) from tb_collect_card_info_copy1;3select count(app_id) from tb_collect_card_info_copy1;2s">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL count(常量)&#x2F;count（*）&#x2F;count（特定列名的区别）">
 <meta property="og:url" content="http://yoursite.com/2018/07/14/mysql-count/index.html">
 <meta property="og:site_name" content="🍊AwfulOrange">
-<meta property="og:description" content="背景在实际开发过程中，需要计算当前条件下有多少数据时，都需使用count()方法来获取行数，同事中有各种count（）的方法，这里探讨一下常见几种count的区别 表结构 各种count的结果select * from tb_collect_card_info_copy1; select count(*) from tb_collect_card_info_copy1; select count(">
+<meta property="og:description" content="背景在实际开发过程中，需要计算当前条件下有多少数据时，都需使用count()方法来获取行数，同事中有各种count（）的方法，这里探讨一下常见几种count的区别 表结构 各种count的结果select count(*) from tb_collect_card_info_copy1;3select count(app_id) from tb_collect_card_info_copy1;2s">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/image/blog-pic/mysql-count-1.jpeg">
-<meta property="og:updated_time" content="2018-09-03T02:09:18.884Z">
+<meta property="og:image" content="http://yoursite.com/image/blog-pic/mysql-count-1.png">
+<meta property="og:updated_time" content="2018-09-06T08:30:49.638Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL count(常量)&#x2F;count（*）&#x2F;count（特定列名的区别）">
-<meta name="twitter:description" content="背景在实际开发过程中，需要计算当前条件下有多少数据时，都需使用count()方法来获取行数，同事中有各种count（）的方法，这里探讨一下常见几种count的区别 表结构 各种count的结果select * from tb_collect_card_info_copy1; select count(*) from tb_collect_card_info_copy1; select count(">
-<meta name="twitter:image" content="http://yoursite.com/image/blog-pic/mysql-count-1.jpeg">
+<meta name="twitter:description" content="背景在实际开发过程中，需要计算当前条件下有多少数据时，都需使用count()方法来获取行数，同事中有各种count（）的方法，这里探讨一下常见几种count的区别 表结构 各种count的结果select count(*) from tb_collect_card_info_copy1;3select count(app_id) from tb_collect_card_info_copy1;2s">
+<meta name="twitter:image" content="http://yoursite.com/image/blog-pic/mysql-count-1.png">
     
     
         
@@ -101,7 +101,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#表结构"><span class="toc-number">1.1.</span> <span class="toc-text">表结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#各种count的结果"><span class="toc-number">1.2.</span> <span class="toc-text">各种count的结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#结论"><span class="toc-number">1.3.</span> <span class="toc-text">结论</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#表结构"><span class="toc-number">1.1.</span> <span class="toc-text">表结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#各种count的结果"><span class="toc-number">1.2.</span> <span class="toc-text">各种count的结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#结论"><span class="toc-number">1.3.</span> <span class="toc-text">结论</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#运行结果"><span class="toc-number">1.3.1.</span> <span class="toc-text">运行结果</span></a></li></ol></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -141,13 +141,15 @@
 
   <div class="content" itemprop="articleBody">
     <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>在实际开发过程中，需要计算当前条件下有多少数据时，都需使用count()方法来获取行数，同事中有各种count（）的方法，这里探讨一下常见几种count的区别</p>
-<h4 id="表结构"><a href="#表结构" class="headerlink" title="表结构"></a>表结构</h4><p><img src="/image/blog-pic/mysql-count-1.jpeg" alt="工作区-stage-HEAD"></p>
-<h4 id="各种count的结果"><a href="#各种count的结果" class="headerlink" title="各种count的结果"></a>各种count的结果</h4><p>select * from tb_collect_card_info_copy1;</p>
-<p>select count(*) from tb_collect_card_info_copy1;</p>
-<p>select count(app_id) from tb_collect_card_info_copy1;</p>
-<p>select count(consumer_id) from tb_collect_card_info_copy1;</p>
-<p>select count(1) from tb_collect_card_info_copy1;</p>
-<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><p>count(列名) 时count 会忽略为null的列<br>count(*)、count(1)、count(CONSTANT) 即传统意义上的行数</p>
+<h4 id="表结构"><a href="#表结构" class="headerlink" title="表结构"></a>表结构</h4><p><img src="/image/blog-pic/mysql-count-1.png" alt="表结构"></p>
+<h4 id="各种count的结果"><a href="#各种count的结果" class="headerlink" title="各种count的结果"></a>各种count的结果</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> tb_collect_card_info_copy1;</span><br><span class="line">3</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(app_id) <span class="keyword">from</span> tb_collect_card_info_copy1;</span><br><span class="line">2</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(consumer_id) <span class="keyword">from</span> tb_collect_card_info_copy1;</span><br><span class="line">1</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(<span class="number">1</span>) <span class="keyword">from</span> tb_collect_card_info_copy1;</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><h5 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h5><p>count(列名) 时count 会忽略为null的列<br>count(*)、count(1)、count(CONSTANT) 即传统意义上的行数</p>
+<blockquote>
+<p>当mysql确认括号内的表达式值不可能为空时，实际上就是在统计行数。最简单的就是当我们使用COUNT(<em>)的时候，这种情况下通配符</em>并不会像我们猜想的那样扩展成所有的列，实际上，它会忽略所有的列而直接统计所有的行数。</p>
+</blockquote>
+<blockquote>
+<p>innoDB count查询实时 ； myISAM count做过优化 - 内部存在计数器（没有where条件的情况下）- count直接取计数器中的值</p>
+</blockquote>
 
   </div>
 </article>
@@ -172,7 +174,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#表结构"><span class="toc-number">1.1.</span> <span class="toc-text">表结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#各种count的结果"><span class="toc-number">1.2.</span> <span class="toc-text">各种count的结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#结论"><span class="toc-number">1.3.</span> <span class="toc-text">结论</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#表结构"><span class="toc-number">1.1.</span> <span class="toc-text">表结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#各种count的结果"><span class="toc-number">1.2.</span> <span class="toc-text">各种count的结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#结论"><span class="toc-number">1.3.</span> <span class="toc-text">结论</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#运行结果"><span class="toc-number">1.3.1.</span> <span class="toc-text">运行结果</span></a></li></ol></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
